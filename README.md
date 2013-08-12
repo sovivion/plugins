@@ -1,4 +1,3 @@
-jquery_plugins
+plugins
 ==============
 
-plugins for jquery
