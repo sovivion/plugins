@@ -1,0 +1,26 @@
+.tab {
+    padding: 10px;
+}
+.nav {
+    width: 500px;
+    height: 30px;
+}
+.nav li{          
+    float: left;
+    height: 30px;
+    width: 100px;
+    background: #ddd;
+    margin-right:10px; 
+    line-height: 30px;
+    text-align: center;
+}
+.nav .current{
+    background: #333;
+    color: #fafafa;
+}
+.content {
+    width: 500px;
+    height: 250px;
+    padding: 10px 0;
+    border: 1px solid #aaa;
+}
