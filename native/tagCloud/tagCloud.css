@@ -1,0 +1,16 @@
+body {
+    background: #fff
+}
+.tagcloud-con {
+    margin: 20px;
+    width: 500px;
+    height: 500px; 
+    float: left;
+    background: #426D65;
+}
+.tagcloud-con a {                 
+    font-weight:bold; 
+    text-decoration:none; 
+    padding: 5px;
+    color: #ddd
+}
