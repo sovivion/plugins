@@ -31,26 +31,6 @@
                 }
             }
         })();
-        //类型检测方法
-        var isType = function(obj, type) {
-            var toString = Object.prototype.toString;
-            return(type === "Null" && obj === null) || (type === "Undefined" && obj === undefined) || toString.call(obj).slice(8, -1) === type;
-        };
-        //深度拷贝方法
-        var deepCopy = function(result, source) {
-            for(var key in source) {
-                var copy = source[key];
-                if(result === copy) continue;
-                if(isType(copy, "Array")) {
-                    result[key] = arguments.callee(result[key] || [], copy);
-                } else if (isType(copy, "Object")) {
-                    result[key] = arguments.callee(result[key] || {}, copy);
-                } else {
-                    result[key] = copy;
-                }
-            }
-            return result;
-        };
         //全局变量
         gvar.option = deepCopy(defaultOption, option);
         gvar.sphereOver = false;
@@ -102,6 +82,26 @@
         create(gvar);   
         setInterval(reDraw(gvar), 50);                    
     };
+    //类型检测方法
+    function isType(obj, type) {
+        var toString = Object.prototype.toString;
+        return(type === "Null" && obj === null) || (type === "Undefined" && obj === undefined) || toString.call(obj).slice(8, -1) === type;
+    };
+    //深度拷贝方法
+    function deepCopy(result, source) {
+        for(var key in source) {
+            var copy = source[key];
+            if(result === copy) continue;
+            if(isType(copy, "Array")) {
+                result[key] = arguments.callee(result[key] || [], copy);
+            } else if (isType(copy, "Object")) {
+                result[key] = arguments.callee(result[key] || {}, copy);
+            } else {
+                result[key] = copy;
+            }
+        }
+        return result;
+    };    
     /**  
      * 创建云
      */
