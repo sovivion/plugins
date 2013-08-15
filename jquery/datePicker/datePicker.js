@@ -22,62 +22,153 @@
             monthName: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']         
         };
         var op = $.extend(defaultOptions, options || {}); 
-        var cp = $("#BBIT_DP_CONTAINER");
-        if (cp.length == 0) {
-            var cpHA = [];
-            cpHA.push("<div id='BBIT_DP_CONTAINER' class='bbit-dp' style='width:175px;z-index:999;'>");
-            if (!-[1,]&&!window.XMLHttpRequest) {
-                cpHA.push('<iframe style="position:absolute;z-index:-1;width:100%;height:205px;top:0;left:0;scrolling:no;" frameborder="0" src="about:blank"></iframe>');
-            }
-            cpHA.push("<table class='dp-maintable' cellspacing='0' cellpadding='0' style='width:175px;'><tbody><tr><td>");
-            cpHA.push("<table class='bbit-dp-top' cellspacing='0'><tr><td class='bbit-dp-top-left'> <a id='BBIT_DP_LEFTBTN'>&nbsp;</a></td><td class='bbit-dp-top-center' align='center'><em><button id='BBIT_DP_YMBTN'></button></em></td><td class='bbit-dp-top-right'><a id='BBIT_DP_RIGHTBTN'>&nbsp;</a></td></tr></table>");
-            cpHA.push("</td></tr>");
-            cpHA.push("<tr><td>");
-            cpHA.push("<table id='BBIT_DP_INNER' class='bbit-dp-inner' cellspacing='0'><thead><tr>");
-            for (var i = 0; i < 7; i++) {
-                cpHA.push("<th><span>", op.weekName[i], "</span></th>");
-            }
-            cpHA.push("</tr></thead>");
-            cpHA.push("<tbody></tbody></table>");
-            cpHA.push("</td></tr>");
-            cpHA.push("<tr><td class='bbit-dp-bottom' align='center'><button id='BBIT-DP-TODAY'>今日</button></td></tr>");
-            cpHA.push("</tbody></table>");
-            cpHA.push("<div id='BBIT-DP-MP' class='bbit-dp-mp'  style='z-index:auto;'><table id='BBIT-DP-T' style='width: 175px; height: 193px' border='0' cellspacing='0'><tbody>");
-            cpHA.push("<tr>");
-            cpHA.push("<td class='bbit-dp-mp-month' xmonth='0'><a>", op.monthName[0], "</a></td><td class='bbit-dp-mp-month bbit-dp-mp-sep' xmonth='6'><a>", op.monthName[6], "</a></td><td class='bbit-dp-mp-ybtn' align='middle'><a id='BBIT-DP-MP-PREV' class='bbit-dp-mp-prev'></a></td><td class='bbit-dp-mp-ybtn' align='middle'><a id='BBIT-DP-MP-NEXT' class='bbit-dp-mp-next'></a></td>");
-            cpHA.push("</tr>");
-            cpHA.push("<tr>");
-            cpHA.push("<td class='bbit-dp-mp-month' xmonth='1'><a>", op.monthName[1], "</a></td><td class='bbit-dp-mp-month bbit-dp-mp-sep' xmonth='7'><a>", op.monthName[7], "</a></td><td class='bbit-dp-mp-year'><a></a></td><td class='bbit-dp-mp-year'><a></a></td>");
-            cpHA.push("</tr>");
-            cpHA.push("<tr>");
-            cpHA.push("<td class='bbit-dp-mp-month' xmonth='2'><a>", op.monthName[2], "</a></td><td class='bbit-dp-mp-month bbit-dp-mp-sep' xmonth='8'><a>", op.monthName[8], "</a></td><td class='bbit-dp-mp-year'><a></a></td><td class='bbit-dp-mp-year'><a></a></td>");
-            cpHA.push("</tr>");
-            cpHA.push("<tr>");
-            cpHA.push("<td class='bbit-dp-mp-month' xmonth='3'><a>", op.monthName[3], "</a></td><td class='bbit-dp-mp-month bbit-dp-mp-sep' xmonth='9'><a>", op.monthName[9], "</a></td><td class='bbit-dp-mp-year'><a></a></td><td class='bbit-dp-mp-year'><a></a></td>");
-            cpHA.push("</tr>");
+        $(this).each(function() {
+            var obj = $(this).addClass("bbit-dp-input");
+            var picker = $(op.picker);
+            obj.after(picker);
+            picker.click(function(e) {
+                var isshow = $(this).attr("isshow");
+                var me = $(this);
+                if (cp.css("visibility") == "visible") {
+                    cp.css(" visibility", "hidden");
+                }
+                if (isshow == "1") {
+                    me.attr("isshow", "0");
+                    cp.removeData("ctarget").removeData("cpk").removeData("indata");
+                    return false;
+                }
+                var v = obj.val();
+                if (v != "") {
+                    v = stringtodate(v);
+                }
+                if (v == null || v == "") {
+                    op.Year = new Date().getFullYear();
+                    op.Month = new Date().getMonth() + 1;
+                    op.Day = new Date().getDate();
+                    v = null
+                }
+                else {
+                    op.Year = v.getFullYear();
+                    op.Month =v.getMonth() + 1;
+                    op.Day = v.getDate();
+                }
+                cp.data("ctarget", obj).data("cpk", me).data("indata", v);
+                if (op.applyrule && $.isFunction(op.applyrule)) {
+                    var rule = op.applyrule.call(obj, obj[0].id);
+                    if (rule) {
+                        if (rule.startdate) {
+                            cp.data("ads", rule.startdate);
+                        }
+                        else {
+                            cp.removeData("ads");
+                        }
+                        if (rule.enddate) {
+                            cp.data("ade", rule.enddate);
+                        }
+                        else {
+                            cp.removeData("ade");
+                        }
+                    }
+                }
+                else {
+                    cp.removeData("ads").removeData("ade")
+                }
+                writecb();
 
-            cpHA.push("<tr>");
-            cpHA.push("<td class='bbit-dp-mp-month' xmonth='4'><a>", op.monthName[4], "</a></td><td class='bbit-dp-mp-month bbit-dp-mp-sep' xmonth='10'><a>", op.monthName[10], "</a></td><td class='bbit-dp-mp-year'><a></a></td><td class='bbit-dp-mp-year'><a></a></td>");
-            cpHA.push("</tr>");
+                $("#BBIT-DP-T").height(cp.height());
+                var t = obj;
+                var pos = t.offset();
 
-            cpHA.push("<tr>");
-            cpHA.push("<td class='bbit-dp-mp-month' xmonth='5'><a>", op.monthName[5], "</a></td><td class='bbit-dp-mp-month bbit-dp-mp-sep' xmonth='11'><a>", op.monthName[11], "</a></td><td class='bbit-dp-mp-year'><a></a></td><td class='bbit-dp-mp-year'><a></a></td>");
-            cpHA.push("</tr>");
-            cpHA.push("<tr class='bbit-dp-mp-btns'>");
-            cpHA.push("<td colspan='4'><button id='BBIT-DP-MP-OKBTN' class='bbit-dp-mp-ok'>确认</button><button id='BBIT-DP-MP-CANCELBTN' class='bbit-dp-mp-cancel'>取消</button></td>");
-            cpHA.push("</tr>");
+                var height = t.outerHeight();
+                var newpos = { left: pos.left, top: pos.top + height };
+                var w = cp.width();
+                var h = cp.height();
+                var bw = document.documentElement.clientWidth;
+                var bh = document.documentElement.clientHeight;
+                if ((newpos.left + w) >= bw) {
+                    newpos.left = bw - w - 2;
+                }
+                if ((newpos.top + h) >= bh) {
+                    newpos.top = pos.top - h - 2;
+                }
+                if (newpos.left < 0) {
+                    newpos.left = 10;
+                }
+                if (newpos.top < 0) {
+                    newpos.top = 10;
+                }
+                $("#BBIT-DP-MP").hide();
+                newpos.visibility = "visible";
+                cp.css(newpos);
+                
+                $(this).attr("isshow", "1");
+                $(document).one("click", function(e) {
+                    me.attr("isshow", "0");
+                    cp.removeData("ctarget").removeData("cpk").removeData("indata");
+                    cp.css("visibility", "hidden");
+                });
 
-            cpHA.push("</tbody></table>");
-            cpHA.push("</div>");
-            cpHA.push("</div>");
-
-            var s = cpHA.join("");
-            $(document.body).append(s);
-            cp = $("#BBIT_DP_CONTAINER");
-            cp.click(function() {
                 return false;
             });
-            initevents();
+        });
+        function create() {
+            var cp = $("#BBIT_DP_CONTAINER");
+            if (cp.length == 0) {
+                var cpHA = [];
+                cpHA.push("<div id='BBIT_DP_CONTAINER' class='bbit-dp' style='width:175px;z-index:999;'>");
+                if (!-[1,]&&!window.XMLHttpRequest) {
+                    cpHA.push('<iframe style="position:absolute;z-index:-1;width:100%;height:205px;top:0;left:0;scrolling:no;" frameborder="0" src="about:blank"></iframe>');
+                }
+                cpHA.push("<table class='dp-maintable' cellspacing='0' cellpadding='0' style='width:175px;'><tbody><tr><td>");
+                cpHA.push("<table class='bbit-dp-top' cellspacing='0'><tr><td class='bbit-dp-top-left'> <a id='BBIT_DP_LEFTBTN'>&nbsp;</a></td><td class='bbit-dp-top-center' align='center'><em><button id='BBIT_DP_YMBTN'></button></em></td><td class='bbit-dp-top-right'><a id='BBIT_DP_RIGHTBTN'>&nbsp;</a></td></tr></table>");
+                cpHA.push("</td></tr>");
+                cpHA.push("<tr><td>");
+                cpHA.push("<table id='BBIT_DP_INNER' class='bbit-dp-inner' cellspacing='0'><thead><tr>");
+                for (var i = 0; i < 7; i++) {
+                    cpHA.push("<th><span>", op.weekName[i], "</span></th>");
+                }
+                cpHA.push("</tr></thead>");
+                cpHA.push("<tbody></tbody></table>");
+                cpHA.push("</td></tr>");
+                cpHA.push("<tr><td class='bbit-dp-bottom' align='center'><button id='BBIT-DP-TODAY'>今日</button></td></tr>");
+                cpHA.push("</tbody></table>");
+                cpHA.push("<div id='BBIT-DP-MP' class='bbit-dp-mp'  style='z-index:auto;'><table id='BBIT-DP-T' style='width: 175px; height: 193px' border='0' cellspacing='0'><tbody>");
+                cpHA.push("<tr>");
+                cpHA.push("<td class='bbit-dp-mp-month' xmonth='0'><a>", op.monthName[0], "</a></td><td class='bbit-dp-mp-month bbit-dp-mp-sep' xmonth='6'><a>", op.monthName[6], "</a></td><td class='bbit-dp-mp-ybtn' align='middle'><a id='BBIT-DP-MP-PREV' class='bbit-dp-mp-prev'></a></td><td class='bbit-dp-mp-ybtn' align='middle'><a id='BBIT-DP-MP-NEXT' class='bbit-dp-mp-next'></a></td>");
+                cpHA.push("</tr>");
+                cpHA.push("<tr>");
+                cpHA.push("<td class='bbit-dp-mp-month' xmonth='1'><a>", op.monthName[1], "</a></td><td class='bbit-dp-mp-month bbit-dp-mp-sep' xmonth='7'><a>", op.monthName[7], "</a></td><td class='bbit-dp-mp-year'><a></a></td><td class='bbit-dp-mp-year'><a></a></td>");
+                cpHA.push("</tr>");
+                cpHA.push("<tr>");
+                cpHA.push("<td class='bbit-dp-mp-month' xmonth='2'><a>", op.monthName[2], "</a></td><td class='bbit-dp-mp-month bbit-dp-mp-sep' xmonth='8'><a>", op.monthName[8], "</a></td><td class='bbit-dp-mp-year'><a></a></td><td class='bbit-dp-mp-year'><a></a></td>");
+                cpHA.push("</tr>");
+                cpHA.push("<tr>");
+                cpHA.push("<td class='bbit-dp-mp-month' xmonth='3'><a>", op.monthName[3], "</a></td><td class='bbit-dp-mp-month bbit-dp-mp-sep' xmonth='9'><a>", op.monthName[9], "</a></td><td class='bbit-dp-mp-year'><a></a></td><td class='bbit-dp-mp-year'><a></a></td>");
+                cpHA.push("</tr>");
+
+                cpHA.push("<tr>");
+                cpHA.push("<td class='bbit-dp-mp-month' xmonth='4'><a>", op.monthName[4], "</a></td><td class='bbit-dp-mp-month bbit-dp-mp-sep' xmonth='10'><a>", op.monthName[10], "</a></td><td class='bbit-dp-mp-year'><a></a></td><td class='bbit-dp-mp-year'><a></a></td>");
+                cpHA.push("</tr>");
+
+                cpHA.push("<tr>");
+                cpHA.push("<td class='bbit-dp-mp-month' xmonth='5'><a>", op.monthName[5], "</a></td><td class='bbit-dp-mp-month bbit-dp-mp-sep' xmonth='11'><a>", op.monthName[11], "</a></td><td class='bbit-dp-mp-year'><a></a></td><td class='bbit-dp-mp-year'><a></a></td>");
+                cpHA.push("</tr>");
+                cpHA.push("<tr class='bbit-dp-mp-btns'>");
+                cpHA.push("<td colspan='4'><button id='BBIT-DP-MP-OKBTN' class='bbit-dp-mp-ok'>确认</button><button id='BBIT-DP-MP-CANCELBTN' class='bbit-dp-mp-cancel'>取消</button></td>");
+                cpHA.push("</tr>");
+
+                cpHA.push("</tbody></table>");
+                cpHA.push("</div>");
+                cpHA.push("</div>");
+
+                var s = cpHA.join("");
+                $(document.body).append(s);
+                cp = $("#BBIT_DP_CONTAINER");
+                cp.click(function() {
+                    return false;
+                });
+                initevents();
+            }
         }
         function initevents() {
             $("#BBIT-DP-TODAY").click(returntoday);
@@ -326,97 +417,6 @@
             }
             tb.html(bhm.join(""));
         }
-       
-        return $(this).each(function() {
-
-            var obj = $(this).addClass("bbit-dp-input");
-            var picker = $(op.picker);
-            obj.after(picker);
-            picker.click(function(e) {
-                var isshow = $(this).attr("isshow");
-                var me = $(this);
-                if (cp.css("visibility") == "visible") {
-                    cp.css(" visibility", "hidden");
-                }
-                if (isshow == "1") {
-                    me.attr("isshow", "0");
-                    cp.removeData("ctarget").removeData("cpk").removeData("indata");
-                    return false;
-                }
-                var v = obj.val();
-                if (v != "") {
-                    v = stringtodate(v);
-                }
-                if (v == null || v == "") {
-                    op.Year = new Date().getFullYear();
-                    op.Month = new Date().getMonth() + 1;
-                    op.Day = new Date().getDate();
-                    v = null
-                }
-                else {
-                    op.Year = v.getFullYear();
-                    op.Month =v.getMonth() + 1;
-                    op.Day = v.getDate();
-                }
-                cp.data("ctarget", obj).data("cpk", me).data("indata", v);
-                if (op.applyrule && $.isFunction(op.applyrule)) {
-                    var rule = op.applyrule.call(obj, obj[0].id);
-                    if (rule) {
-                        if (rule.startdate) {
-                            cp.data("ads", rule.startdate);
-                        }
-                        else {
-                            cp.removeData("ads");
-                        }
-                        if (rule.enddate) {
-                            cp.data("ade", rule.enddate);
-                        }
-                        else {
-                            cp.removeData("ade");
-                        }
-                    }
-                }
-                else {
-                    cp.removeData("ads").removeData("ade")
-                }
-                writecb();
-
-                $("#BBIT-DP-T").height(cp.height());
-                var t = obj;
-                var pos = t.offset();
-
-                var height = t.outerHeight();
-                var newpos = { left: pos.left, top: pos.top + height };
-                var w = cp.width();
-                var h = cp.height();
-                var bw = document.documentElement.clientWidth;
-                var bh = document.documentElement.clientHeight;
-                if ((newpos.left + w) >= bw) {
-                    newpos.left = bw - w - 2;
-                }
-                if ((newpos.top + h) >= bh) {
-                    newpos.top = pos.top - h - 2;
-                }
-                if (newpos.left < 0) {
-                    newpos.left = 10;
-                }
-                if (newpos.top < 0) {
-                    newpos.top = 10;
-                }
-                $("#BBIT-DP-MP").hide();
-                newpos.visibility = "visible";
-                cp.css(newpos);
-                
-                $(this).attr("isshow", "1");
-                $(document).one("click", function(e) {
-                    me.attr("isshow", "0");
-                    cp.removeData("ctarget").removeData("cpk").removeData("indata");
-                    cp.css("visibility", "hidden");
-                });
-
-                return false;
-            });
-        });
     };
     function dateFormat(format) {
         var o = {

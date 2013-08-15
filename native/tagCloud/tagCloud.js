@@ -17,9 +17,7 @@
             resis: 0.8,             //惯性系数 用于控制无作用力后持续运动时间
             hover: 0.5,             //停留粘性 用于这是鼠标悬停在可点击标签上的暂时减速
             randomPos: true,        //是否随机定位
-            randomColor: true,       //是否随机添加颜色
-            afa: {},
-            adfaf: [1,2]
+            randomColor: true       //是否随机添加颜色
         };
         //事件绑定方法
         var onEvent = (function() {
@@ -95,7 +93,7 @@
         onEvent(gvar.con, 'mouseout', function() {
             gvar.sphereOver = false;
         });
-        onEvent(gvar.con, 'mousemove', function() {
+        onEvent(gvar.con, 'mousemove', function(e) {
             var event = window.event || e;
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
             var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
