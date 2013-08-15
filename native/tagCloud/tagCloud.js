@@ -4,7 +4,7 @@
  * @create 2013.07.31
  * @version 0.1
  */
-(function() {
+;(function() {
     //全局函数
     window.tagCloud = function(id, option) {
         var gvar = {}; 

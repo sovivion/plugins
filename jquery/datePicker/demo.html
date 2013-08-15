@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.11.0/build/cssreset/cssreset-min.css" />
+        <link rel="stylesheet" type="text/css" href="datePicker.css" />
+    </head>
+    <body>        
+        <p>
+            <input type="text" id="temptime" value="2013-8-22" />
+        </p>
+        <p>
+            <input type="text" id='datetime'/>
+            <input type="text" id='endtime'/>
+        </p>     
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>        
+        <script type="text/javascript" src="datePicker.js"></script>     
+        <script type="text/javascript">       
+            $("#datetime").datePicker({ picker: "<button>Select</button>", applyrule: rule });
+            $("#endtime").datePicker({ picker: "<button>Select</button>", applyrule: rule });
+            $("#temptime").datePicker({ picker: "<img class='picker' align='middle' src='images/cal.gif' alt=''/>" });
+            function rule(id) {
+                if (id == 'datetime') {
+                    var v = $("#endtime").val();
+                    if (v == "") {
+                        return null;
+                    }
+                    else {
+                        var d = v.match(/^(\d{1,4})(-|\/|.)(\d{1,2})\2(\d{1,2})$/);
+                        if (d != null) {
+                            var nd = new Date(parseInt(d[1], 10), parseInt(d[3], 10) - 1, parseInt(d[4], 10));
+                            return { enddate: nd };
+                        }
+                        else {
+                            return null;
+                        }
+                    }
+                }
+                else {
+                    var v = $("#datetime").val();
+                    if (v == "") {
+                        return null;
+                    }
+                    else {
+                        var d = v.match(/^(\d{1,4})(-|\/|.)(\d{1,2})\2(\d{1,2})$/);
+                        if (d != null) {
+                            var nd = new Date(parseInt(d[1], 10), parseInt(d[3], 10) - 1, parseInt(d[4], 10));
+                            return { startdate: nd };
+                        }
+                        else {
+                            return null;
+                        }
+                    }
+
+                }
+            }
+        </script>
+    </body>
+</html>
