@@ -22,6 +22,7 @@
             monthName: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']         
         };
         var op = $.extend(defaultOptions, options || {}); 
+			cp = create();
         $(this).each(function() {
             var obj = $(this).addClass("bbit-dp-input");
             var picker = $(op.picker);
@@ -169,6 +170,7 @@
                 });
                 initevents();
             }
+			return cp;
         }
         function initevents() {
             $("#BBIT-DP-TODAY").click(returntoday);
