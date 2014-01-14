@@ -4,7 +4,7 @@
  * @create 2013.07.31
  * @version 0.1
  */
-;(function($) {
+;(function($) {  
     $.fn.tab = function(options) {
         defaultOptions = {
             index: 0,                   //初始标签        
