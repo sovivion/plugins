@@ -1,0 +1,37 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		function Cat (color,age) {
+			this.color = color;
+			this.age = age;
+		}
+		function Dog (color,age){
+			return {
+				color: color,
+				age: age
+			}
+		}
+		function Fish(){
+			return 12;
+		}
+		var pig = "pig";
+		function Pig (){
+		}
+		Pig.prototype = new Dog("mix",3);
+
+		var cat = new Cat("white",1);
+		console.log(cat);
+		var dog = new Dog("black",2);
+		console.log(dog);
+		var fish = new Fish();
+		console.log(fish);
+		//var pigs = new pig();
+		//console.log(pigs);
+		var piger = new Pig();
+		console.log(piger);
+	</script>
+</body>
+</html>
