@@ -1,0 +1,423 @@
+/* application talent part*/
+.application_talent_f {
+	width: 250px;
+	height: 159px;
+	display: none
+}
+.application_talent_f a {
+	display: block;
+}
+.application_f{
+	width: 248px;
+	display: none;
+	border: 1px solid #e0e0e0;
+	background-color: #fff;
+}
+.application_f .hr_require,.application_suc,.application_f .work_info_f button,.application_f .education_info_f button,.application_f .work_info_f p,.application_f .require_content a,.application_f .education_info_f p{
+	background: url(applicationT_bg.jpg);
+}
+.application_f .hr_require {
+	height: 57px;
+	background-position: -50px 0;
+	padding: 10px 15px;
+}
+.application_f .hr_require .hr_pic {
+	width: 45px;
+	height: 50px;
+	margin-right: 15px;
+	float: left;
+}
+.application_f .hr_require .hr_info {
+	padding-top: 10px;
+}
+.application_f .hr_require p {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #666;
+	line-height: 22px;
+}
+.application_f .hr_require .hr_name,.application_f .usr_name {
+	font-family: "Tahoma";
+	font-size: 14px;
+	font-weight: bold;
+}
+.application_f .require_content {
+	padding: 10px 20px;
+	font-family: "宋体";
+	font-size: 14px;
+	color: #666;
+}
+.application_f .require_content p{
+	line-height: 22px;
+}
+.application_f .require_content a:visited,.application_f .require_content a:link {
+	width: 47px;
+	height: 20px;
+	display: block;
+	margin-right: 20px;
+	float: left;
+	font-size: 12px;
+	color: #999;
+	text-decoration: none;
+	text-align: center;
+	line-height: 20px;
+	background-position: 0 -23px;
+
+}
+.application_f .require_content a:hover {
+	color: #fff;
+	text-align: center;
+	background-position: 0 0;
+}
+.application_f .answer_f {
+	height: 30px;
+	margin-top: 10px;
+}
+
+.application_f .work_info_f,.application_f .education_info_f {
+	padding: 10px 0;
+}
+.application_f .work_info_f input,.application_f .education_info_f input {
+	width: 196px;
+	height: 37px;
+	line-height: 37px;
+	border: 1px solid #ddd;
+	margin-bottom: 20px;
+	padding: 0 5px;
+	color: #999;
+}
+.application_f .work_info_f p,.application_f .education_info_f p{
+	font-size: 12px;
+	font-family: "宋体";
+	color: #999;
+	padding-left: 20px;
+	background-position: 0 -142px;
+	background-repeat: no-repeat;
+}
+.application_f .work_info_f button,.application_f .education_info_f button {
+	width: 207px;
+	height: 30px;
+	color: #fff;
+	font-size: 14px;
+	font-family: "宋体";
+	text-align: center;
+	line-height: 30px;
+	background-position: 0 -104px;
+	display: block;
+	text-decoration: none;
+	border: none;
+}
+.font-12 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #999;
+}
+.application_suc {
+	width: 40px;
+	height: 70px;
+	margin-right: 10px;
+	margin-top: 10px;
+	float: left;
+	background-position: 0 -178px;
+	background-repeat: no-repeat;
+}
+.application_suc_f {
+	width: 250px;
+	display: none;
+}
+.suc_go {
+	margin-top: 10px;
+}
+
+/* 职能行业插件样式 start */
+.p-data-wrap-f {
+    background-color: #FFFFFF;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 3px #E9E9E9;
+    font-size: 12px;
+    height: 33px;
+    position: relative;
+    text-align: left;
+    width: 206px;
+    margin-bottom: 20px;
+}
+.p-data-wrap-f ul, .p-data-wrap-f li {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.p-data-wrap-f a {
+    color: #333333;
+    text-decoration: none;
+}
+.p-data-wrap-f a:hover {
+    color: #333333;
+}
+.p-data-wrap-f:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.p-data-wrap-f .ms-txt-component {
+    background: none repeat scroll 0 center rgba(0, 0, 0, 0);
+    border: 0 none;
+    outline: 0 none;
+    width: 50px;
+}
+.p-data-wrap-f .txt-box-com-W {
+    height: 37px;
+    margin-right: 38px;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+.p-data-wrap-f .txt-box-component {
+    height: 28px;
+    left: 0;
+    padding: 9px 5px 0;
+    position: absolute;
+    top: 0;
+    width: 100000px;
+}
+.p-data-wrap-f .txt-box-tip {
+    color: #999999;
+    left: 10px;
+    position: absolute;
+    top: 12px;
+}
+.p-data-wrap-f .ms-wrap-component {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #F9F9F9;
+    border-color: #C6C6C6 #EEEEEE #EEEEEE #C6C6C6;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    padding: 4px 4px 0;
+    width: 300px;
+}
+.p-data-wrap-f .ms-btn-component {
+    cursor: pointer;
+    height: 31px;
+    position: absolute;
+    right: 4px;
+    top: 3px;
+    width: 32px;
+    z-index: 111;
+}
+.p-data-wrap-f .ms-txt-component {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    color: #999999;
+    display: inline-block;
+    float: none;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    margin: 0 0 4px 5px;
+    padding: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 60px;
+    word-wrap: normal;
+}
+.p-data-wrap-f .ms-txt-component:focus {
+    outline: 0 none;
+}
+.p-data-wrap-f .ms-selected-item {
+    background: url("http://image.tianji.com/ideal/job/new/images/resume/pickpad.gif") no-repeat scroll left top rgba(0, 0, 0, 0);
+    color: #1357A2;
+    cursor: default;
+    display: inline-block;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    margin: 0 5px 4px 2px;
+    padding-left: 8px;
+    text-decoration: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.p-data-wrap-f .ms-selected-item .delete-component {
+    background: url("http://image.tianji.com/ideal/job/new/images/resume/pickpad.gif") no-repeat scroll right top rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    margin-left: 6px;
+    text-indent: -99999px;
+    width: 20px;
+}
+.p-data-wrap-f .ms-selected-item:hover {
+    background-position: left bottom;
+    color: #333333;
+    text-decoration: none;
+}
+.p-data-wrap-f .ms-selected-item:hover .delete-component {
+    background-position: right bottom;
+}
+.p-data-wrap-f .ms-disabled .ms-selected-item:hover {
+    background-position: left top;
+    color: #1357A2;
+    text-decoration: none;
+}
+.p-data-wrap-f .ms-disabled .ms-selected-item:hover .delete-component {
+    background-position: right top;
+    cursor: default;
+}
+.ms-error-component {
+    background: none repeat scroll 0 0 #F6F6F6;
+    border: 1px solid #CCCCCC;
+    color: #999999;
+    font-size: 12px;
+    height: 28px;
+    line-height: 28px;
+    position: absolute;
+    text-align: center;
+    width: 200px;
+    z-index: 10008;
+}
+.ms-ok-component {
+    background: none repeat scroll 0 0 #DAEAF2;
+    border: 1px solid #CCCCCC;
+    position: absolute;
+    width: 150px;
+    z-index: 10008;
+}
+.ms-ok-component .ms-list-component li {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: 1px solid #DAEAF2;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 8px;
+}
+.ms-ok-component .ms-list-component li.active {
+    background: none repeat scroll 0 0 #DAEAF2;
+}
+.ms-ok-component ul, .ms-ok-component li {
+    font-size: 12px;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+.ms-ok-component ul a {
+    color: #333333;
+    text-decoration: none;
+}
+.ms-ok-component ul a:hover {
+    color: #333333;
+}
+.ms-pick {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    color: #1688D9;
+    display: none;
+    font-size: 12px;
+    left: 400px;
+    position: absolute;
+    text-align: left;
+    top: 100px;
+    width: 400px;
+    z-index: 10002;
+}
+.ms-pick .clearfix {
+}
+.ms-pick .clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.ms-pick ul, .ms-pick li {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.ms-pick .h-tab .tab-menu-component {
+    border-right: 1px solid #CCCCCC;
+    cursor: pointer;
+    float: left;
+    padding: 0 13px;
+}
+.ms-pick .h-tab .tab-menu-component.active {
+    font-weight: 700;
+}
+.ms-pick .w-h-tab-component {
+    border-bottom: 1px solid #CCCCCC;
+    height: 25px;
+    line-height: 25px;
+    position: relative;
+}
+.ms-pick .w-h-tab-component .close-component {
+    cursor: pointer;
+    display: block;
+    height: 13px;
+    overflow: hidden;
+    position: absolute;
+    right: 5px;
+    text-indent: -9999em;
+    top: 5px;
+    width: 13px;
+}
+.ms-pick .w-h-tab-component .close-component:hover {
+    background-position: right 0;
+}
+.ms-pick .c-tab .tab-con-component {
+    padding: 5px 15px 12px;
+    width: 370px;
+}
+.ms-pick .c-tab .tab-con-component .ms-cb-component {
+    display: inline-block;
+    margin-top: 5px;
+    width: 88px;
+}
+.ms-pick .c-tab .tab-con-component .ms-cb-component input {
+    display: inline;
+    margin: 3px 3px 0 0;
+    position: relative;
+    top: 2px;
+}
+.ms-pick .c-tab .tab-con-component.tab-con-width {
+    width: 540px;
+}
+.ms-pick .c-tab .tab-con-component.tab-con-width .ms-h3-component {
+    color: #333333;
+    font-weight: 700;
+    padding-top: 5px;
+}
+.ms-pick .c-tab .tab-con-component.tab-con-width .ms-h3-component.ms-mt10 {
+    padding-top: 10px;
+}
+.ms-pick .c-tab .tab-con-component.tab-con-width .fold-head-component span {
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    padding: 1px 0 0 6px;
+    width: 78px;
+}
+.ms-pick .c-tab .tab-con-component.tab-con-width .fold-head-component span label {
+    cursor: pointer;
+    display: inline-block;
+    padding-right: 12px;
+}
+.ms-pick .c-tab .tab-con-component.tab-con-width .fold-head-component span.active {
+    background: none repeat scroll 0 0 #DAEAF2;
+}
+.ms-pick .c-tab .tab-con-component.tab-con-width .fold-head-component span.active label {
+    background-position: right 3px;
+}
+.ms-pick .c-tab .tab-con-component.tab-con-width .fold-con-component {
+    background: none repeat scroll 0 0 #DAEAF2;
+    color: #333333;
+}
+.ms-pick .c-tab .tab-con-component.tab-con-width .fold-con-component .fold-con-out {
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+/* 职能行业插件样式 end */

@@ -1,0 +1,44 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+ul {
+	list-style-type: none;
+}
+a {
+	text-decoration: none;
+}
+.calendar {
+	width: 300px;
+	margin: 20px auto;
+}
+.calendar .nowDate {
+	text-align: center;
+}
+.calendar .nowDate a {
+	margin:0 10px;
+	color: #FF6600;
+}
+.calendar .week {
+	height: 40px;
+	text-align: center;
+}
+.calendar .week ul {	
+	
+}
+.calendar .week ul li {
+	width: 42px;
+	line-height: 40px;
+	float: left;
+}
+.calendar .days ul {
+}
+.calendar .days ul li {
+	width: 38px;
+	height: 40px;
+	border: 1px solid #ccc;
+	line-height: 40px;
+	float: left;
+	margin: 1px;
+	text-align: center;
+}

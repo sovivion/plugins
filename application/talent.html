@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>itooy.com-日历插件bate版</title>
+        <meta name="Keywords" content="itooy,web开发,日历,插件,备忘" />
+        <meta name="Description" content="不一样的日历插件，让你可以在日历上输出自己的数据、可以控制点击日期后所发生的事。" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="talent.css">
+    </head>
+
+    <body>   
+
+        <!-- 申请流程 start -->
+        <script type="text/javascript" src="http://image.tianji.com/tjs/gallery/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="applicationGuide.js"></script>
+        <!-- 时间插件开始 -->
+        <script type="text/javascript" src="jquery-ui-1.10.3.custom.min.js"></script>
+        <script>
+            $(function() {
+                $.datepicker.regional["zh-CN"] = { closeText: "关闭", prevText: "&#x3c;上月", nextText: "下月&#x3e;", currentText: "今天", monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"], monthNamesShort: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二"], dayNames: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"], dayNamesShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"], dayNamesMin: ["日", "一", "二", "三", "四", "五", "六"], weekHeader: "周", dateFormat: "yy-mm-dd", firstDay: 1, isRTL: !1, showMonthAfterYear: !0, yearSuffix: "年" }
+
+                $.datepicker.setDefaults($.datepicker.regional["zh-CN"]);
+
+                $( "#datepicker" ).datepicker({
+                    inline: true,
+                    dateFormat: 'yy-mm-dd',
+                    regional: 'zh-TW',
+                    showAnim: 'slideDown'
+                });
+                $( "#datepicker_f" ).datepicker({
+                    inline: true,
+                    dateFormat: 'yy-mm-dd',
+                    regional: 'zh-TW',
+                    showAnim: 'slideDown'
+                });
+            });
+        </script>
+        <!-- 时间插件结束 -->
+        <!-- 职能插件开始 -->
+        <script type="text/javascript" src="http://image.tianji.com/tjs/gallery/underscore-min.js"></script>
+
+        <script type="text/javascript" src="http://image.tianji.com/tjs/common/initJs.min.js?
+newRePublic.min=image.tianji.com/tjs/msPickMap/js/&newReFunction.min=image.tianji.com/tjs/msPickMap/js/&newReCity.min=image.tianji.com/tjs/msPickMap/js/&newReIndustry.min=image.tianji.com/tjs/msPickMap/js/&clearCache=1.0.8-dev" id="pageScriptInit"></script>
+
+        <script type="text/javascript">
+        $(function(){
+
+            var industryComData = [],industryDefault = [];
+            //industryComData = ["101","102","103","104"];
+            industryDefault = [];
+            
+            $("#p-data-wrap1_").msIndustryPlugin({
+                
+                type:'industry',    
+                check:'radio',  
+                column:4,       
+                allDataMap:industryDataMap, 
+                comData:industryComData,
+                init:industryDefault,
+                name:'industryCode_',
+                style:{
+                    "foldHeadWidth":"120px",
+                    "msCbComponent":"165px",
+                    "msOkWidth":"250px"
+                }
+            });
+
+            var jobDefault = [];
+            //jobDefault = ["1"];
+            $("#p-data-wrap2_").msJobPlugin({
+                    check:'radio',  
+                    column:3,
+                    allDataMap:jobDataMap,  
+                    init:jobDefault,
+                    name:'jobCode_',
+                    style:{
+                        "foldHeadWidth":"165px",
+                        "msCbComponent":"130px",
+                        "msOkWidth":"200px"
+                    }
+                });
+            })
+         </script>
+        <!-- 职能插件结束 -->
+        <div class="application_box">
+            <div class="application_talent_f application_btn_f">
+                <a href="">
+                    <img src="applicationT.jpg">
+                </a>
+             </div>
+            <div class="application_f stepone">
+                <div class="hr_require">
+                    <div class="hr_pic"><img src="head_f.jpg"></div>
+                    <div class="hr_info">
+                        <p class="hr_name">Max</p>
+                        <p><span>天际网</span>HR</p>
+                    </div>
+                </div>
+                <div class="require_content stepone">
+                    <p class="usr_name">TIA</p>
+                    <p><span>天际网</span>是您最近的工作经历吗？</p>
+                    <div class="answer_f">
+                        <a href="" class="yes_f">是</a>
+                        <a href="" class="no_f">否</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="application_f steptwo">
+                <div class="hr_require">
+                    <div class="hr_pic"><img src="head_f.jpg"></div>
+                    <div class="hr_info">
+                        <p class="hr_name">Max</p>
+                        <p><span>天际网</span>HR</p>
+                    </div>
+                </div>
+                <div class="require_content">
+                    <p class="usr_name">TIA</p>
+                    <p>请确认一下你在<span>天际网</span>的工作情况</p>
+                    <div class="work_info_f">
+                        <form method="">
+                            <input type="text" name="company_name" value="公司名称"/>
+                            <input type="text" name="profession" value="职业名称"/>
+                            <div class="p-data-wrap-f" id="p-data-wrap1_" ></div>    
+                            <div class="p-data-wrap-f" id="p-data-wrap2_" ></div>
+                            <input type="text" id="datepicker" name="start_time" value="开始时间"/>
+                            <input type="text" id="datepicker_f" name="end_time" value="结束时间"/>
+                            <p>同步到我的档案</p>
+                            <button href="" class="confirm">确认</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="application_f stepthree">
+                <div class="hr_require">
+                    <div class="hr_pic"><img src="head_f.jpg"></div>
+                    <div class="hr_info">
+                        <p class="hr_name">Max</p>
+                        <p><span>天际网</span>HR</p>
+                    </div>
+                </div>
+                <div class="require_content">
+                    <p class="usr_name">TIA</p>
+                    <p>你的最高学历是<span>人民大学的</span><span>硕士</span>吗？</p>
+                    <div class="answer_f">
+                        <a href="" class="yes_f">是</a>
+                        <a href="" class="no_f">否</a>
+                    </div>
+                </div>
+            </div>
+            <div class="application_f stepfour">
+                <div class="hr_require">
+                    <div class="hr_pic"><img src="head_f.jpg"></div>
+                    <div class="hr_info">
+                        <p class="hr_name">Max</p>
+                        <p><span>天际网</span>HR</p>
+                    </div>
+                </div>
+                <div class="require_content">
+                    <p class="usr_name">TIA</p>
+                    <p>请确认你在<span>人民大学</span>的教育经历</p>
+                    <div class="education_info_f">
+                        <form method="">
+                            <input type="text" name="school_name" value="学校名称"/>
+                            <input type="text" name="edu_background" value="学历"/>
+                            <input type="text" name="professional" value="专业"/>
+                            <input type="text" name="start_time" value="开始时间"/>
+                            <input type="text" name="end_time" value="结束时间"/>
+                            <p>同步到我的档案</p>
+                            <button href="" class="confirm">确认</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="application_f stepfive">
+                <div class="hr_require">
+                    <div class="hr_pic"><img src="head_f.jpg"></div>
+                    <div class="hr_info">
+                        <p class="hr_name">Max</p>
+                        <p><span>天际网</span>HR</p>
+                    </div>
+                </div>
+                <div class="require_content ">
+                    <p class="usr_name">TIA</p>
+                    <p>请告诉我你的联系方式，有好消息我会及时通知你。</p>
+                    <div class="education_info_f">
+                        <form method="">
+                            <input type="text" name="telephone" value="手机号"/>
+                            <button href="" class="confirm">确认</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="application_suc_f stepsix">
+                <div class="application_f">
+                    <div class="hr_require">
+                        <div class="hr_pic"><img src="head_f.jpg"></div>
+                        <div class="hr_info">
+                            <p class="hr_name">Max</p>
+                            <p><span>天际网</span>HR</p>
+                        </div>
+                    </div>
+                    <div class="require_content">
+                        <div class="application_suc"></div>
+                        <p class="usr_name">TIA</p>
+                        <p>你的人才库申请已经提交</p>
+                        <p class="font-12">如果有好的职业机会，</p>
+                        <p class="font-12">我会第一时间通知你。</p>
+                    </div>
+                </div>
+                <div class="suc_go">
+                        <img src="go.jpg"/>
+                </div>
+            </div>
+            <div class="application_f stepone_another">
+                <div class="hr_require">
+                    <div class="hr_pic"><img src="head_f.jpg"></div>
+                    <div class="hr_info">
+                        <p class="hr_name">Max</p>
+                        <p><span>天际网</span>HR</p>
+                    </div>
+                </div>
+                <div class="require_content">
+                    <p class="usr_name">TIA</p>
+                    <p>我想了解你最近一份工作的情况</p>
+                    <div class="work_info_f">
+                        <form method="">
+                            <input type="text" name="company_name" value="公司名称"/>
+                            <input type="text" name="trade" value="所属行业"/>
+                            <input type="text" name="profession" value="职业名称"/>
+                            <input type="text" name="job_function" value="工作职能"/>
+                            <input type="text" name="start_time" value="开始时间"/>
+                            <input type="text" name="end_time" value="结束时间"/>
+                            <p>同步到我的档案</p>
+                            <button href="" class="confirm">确认</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="application_f steptwo_another">
+                <div class="hr_require">
+                    <div class="hr_pic"><img src="head_f.jpg"></div>
+                    <div class="hr_info">
+                        <p class="hr_name">Max</p>
+                        <p><span>天际网</span>HR</p>
+                    </div>
+                </div>
+                <div class="require_content">
+                    <p>那你最近的工作情况是？</p>
+                    <div class="work_info_f">
+                        <form method="">
+                            <input type="text" name="company_name" value="公司名称"/>
+                            <input type="text" name="trade" value="所属行业"/>
+                            <input type="text" name="profession" value="职业名称"/>
+                            <input type="text" name="job_function" value="工作职能"/>
+                            <input type="text" name="start_time" value="开始时间"/>
+                            <input type="text" name="end_time" value="结束时间"/>
+                            <p>同步到我的档案</p>
+                            <button href="" class="confirm">确认</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="application_f stepthree_another">
+                <div class="hr_require">
+                    <div class="hr_pic"><img src="head_f.jpg"></div>
+                    <div class="hr_info">
+                        <p class="hr_name">Max</p>
+                        <p><span>天际网</span>HR</p>
+                    </div>
+                </div>
+                <div class="require_content">
+                    <p>请告诉我你的最高教育经历</p>
+                    <div class="education_info_f">
+                        <form method="">
+                            <input type="text" name="school_name" value="学校名称"/>
+                            <input type="text" name="edu_background" value="学历"/>
+                            <input type="text" name="professional" value="专业"/>
+                            <input type="text" name="start_time" value="开始时间"/>
+                            <input type="text" name="end_time" value="结束时间"/>
+                            <p>同步到我的档案</p>
+                            <button href="" class="confirm">确认</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 申请流程 end-->
+    </body>
+</html>
