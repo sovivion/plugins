@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<!-- 
+		<link rel="stylesheet" type="text/css" href="../css/newReMsPick.css">
+	 -->	
+	<script type="text/javascript" src="http://image.tianji.com/tjs/common/initCss.min.js?
+newReMsPick.min=image.tianji.com/tjs/msPickMap/css/&clearCache=1.0.8-dev" 
+id="pageCssInit"></script>
+
+	<style type="text/css">
+		h3{font-size: 24px; padding: 8px 0 ; }
+		body{padding-bottom: 300px;}
+		body > div, h3{margin: 0 auto; text-align: left;}
+		
+		.divstyle{ border: 1px solid #efefef; margin-bottom: 20px; background: #f9f9f9; padding: 20px; border-radius:5px; }
+		h1{background: #ccc;}
+	</style>
+
+</head>
+
+<body>
+	
+	<div class="divstyle">
+		<h3>地区：</h3>
+		<div class="p-data-wrap" id="p-data-wrap" style="z-index:4"></div>
+		<select>
+			<option>test IE6 遮挡</option>
+		</select>
+	
+		
+		<h3>行业：</h3>
+		<div class="p-data-wrap" id="p-data-wrap1" style="z-index:3"></div>
+		<select>
+			<option>test IE6 遮挡</option>
+		</select>
+	
+		<h3>职能：</h3>
+		<div class="p-data-wrap" id="p-data-wrap2" style="z-index:2"></div>
+		<select>
+			<option>test IE6 遮挡</option>
+		</select>
+	</div>
+
+	<div class="divstyle">
+		<h3>地区：</h3>
+		<div class="p-data-wrap" id="p-data-wrap_" style="z-index:4"></div>
+		<select>
+			<option>test IE6 遮挡</option>
+		</select>
+	
+		
+		<h3>行业：</h3>
+		<div class="p-data-wrap" id="p-data-wrap1_" style="z-index:3"></div>
+		<select>
+			<option>test IE6 遮挡</option>
+		</select>
+	
+		<h3>职能：</h3>
+		<div class="p-data-wrap" id="p-data-wrap2_" style="z-index:2"></div>
+		<select>
+			<option>test IE6 遮挡</option>
+		</select>
+	</div>
+
+
+	<script type="text/javascript" src="http://image.tianji.com/tjs/gallery/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="http://image.tianji.com/tjs/gallery/underscore-min.js"></script>
+
+<!-- 
+	<script type="text/javascript" src="../js/cityDataMap.js"></script>
+	<script type="text/javascript" src="../js/industryDataMap.js"></script>
+	<script type="text/javascript" src="../js/jobDataMap.js"></script>
+
+	<script type="text/javascript" src="../js/newRePublic.js"></script>
+
+	<script type="text/javascript" src="../js/newReCityFn.js"></script>
+	
+	<script type="text/javascript" src="../js/newReJobFn.js"></script>
+	
+	<script type="text/javascript" src="../js/newReIndustryFn.js"></script>
+ -->
+
+
+	<script type="text/javascript" src="http://image.tianji.com/tjs/common/initJs.min.js?
+newRePublic.min=image.tianji.com/tjs/msPickMap/js/&newReFunction.min=image.tianji.com/tjs/msPickMap/js/&newReCity.min=image.tianji.com/tjs/msPickMap/js/&newReIndustry.min=image.tianji.com/tjs/msPickMap/js/&clearCache=1.0.8-dev" id="pageScriptInit"></script>
+
+
+	<script type="text/javascript">
+
+	$(function(){
+
+		var cityComData=[],cityDefault=[];
+		
+		cityComData = ["北京","天津","上海","重庆","石家庄","唐山"];
+		//cityDefault = ["石家庄","北京"];
+
+		$("#p-data-wrap").msCityPlugin({
+				maxCount:5,		
+				allDataMap:cityDataMap,
+				comData:cityComData,
+				init:cityDefault,
+				name:'cityCode_'
+		});
+
+		var industryComData = [],industryDefault = [];
+		industryComData = ["101","102","103","104"];
+		//industryDefault = ["101","102"];
+		
+		$("#p-data-wrap1").msIndustryPlugin({
+			
+			type:'industry',	
+			column:4,		
+			allDataMap:industryDataMap,	
+			comData:industryComData,	
+			init:industryDefault,	
+			name:'industryCode_',
+			style:{
+				"foldHeadWidth":"120px",
+				"msCbComponent":"165px",
+				"msOkWidth":"250px"
+			}
+		});
+
+
+		var jobDefault = [],jobComData=[];
+		//jobDefault = ["1","2"];
+		jobComData = ["1","2"];
+		$("#p-data-wrap2").msJobPlugin({
+				column:3,
+				allDataMap:jobDataMap,	
+				comData:jobComData,
+				init:jobDefault,
+				name:'jobCode_',
+				style:{
+					"foldHeadWidth":"165px",
+					"msCbComponent":"130px",
+					"msOkWidth":"200px"
+				}
+		});
+
+
+	})
+
+	</script>
+
+
+	<script type="text/javascript">
+	$(function(){
+
+		var industryComData = [],industryDefault = [];
+		//industryComData = ["101","102","103","104"];
+		industryDefault = ["101"];
+		
+		$("#p-data-wrap1_").msIndustryPlugin({
+			
+			type:'industry',	
+			check:'radio',	
+			column:4,		
+			allDataMap:industryDataMap,	
+			comData:industryComData,
+			init:industryDefault,
+			name:'industryCode_',
+			style:{
+				"foldHeadWidth":"120px",
+				"msCbComponent":"165px",
+				"msOkWidth":"250px"
+			}
+		});
+
+		var cityComData=[],cityDefault=[];
+		//cityComData = ["北京","天津","上海","重庆","石家庄","唐山"];
+		cityDefault = ["石家庄"];
+
+		$("#p-data-wrap_").msCityPlugin({
+				check:'radio',	
+				allDataMap:cityDataMap,	
+				comData:cityComData,
+				init:cityDefault,
+				name:'cityCode_'
+		});
+
+		var jobDefault = [];
+		//jobDefault = ["1"];
+
+		$("#p-data-wrap2_").msJobPlugin({
+				check:'radio',	
+				column:3,
+				allDataMap:jobDataMap,	
+				init:jobDefault,
+				name:'jobCode_',
+				style:{
+					"foldHeadWidth":"165px",
+					"msCbComponent":"130px",
+					"msOkWidth":"200px"
+				}
+		});
+
+
+
+	})
+
+
+	</script>
+
+</body>
+</html>

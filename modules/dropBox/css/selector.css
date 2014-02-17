@@ -1,0 +1,48 @@
+#wrap {margin:20px;}
+.wml-p-data-wrap {width: 280px; 
+	height: 37px;  
+	border: 1px solid #e6e6e6; 
+	background-color: #fff; 
+	text-align: left; 
+	position: relative; 
+	zoom:1; 
+	font-size: 12px;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px; 
+	border-radius: 1px; 
+	-webkit-box-shadow: #e9e9e9 0px 0px 3px; 
+	-moz-box-shadow: #e9e9e9 0px 0px 3px; 
+	box-shadow: #e9e9e9 0px 0px 3px;
+}
+.wml-p-data-wrap .dropBox {position:absolute;top:30px;left:-1px;width:400px;border:1px solid #ccc;background:#fff;z-index:999;}
+div label {vertical-align:middle;position:relative;top:-4px;color:#666;}
+.wml-p-data-wrap .dropBox em.close {color:#f30;position:absolute;right:10px;top:8px;font:bold 14px/15px 'Arial' normal;cursor:pointer;}
+.wml-p-data-wrap input.dftTxt {border:none;background:none;outline:none;height:37px;line-height:37px;margin-left:10px;cursor:default;*margin-left:-20px;color:#999;}
+.dropList li em.selected {display:block;width:11px;height:6px;background:url(../images/dropIcons.png) -5px -31px no-repeat;position:absolute;right:10px;top:10px;_background:url(../images/dropicons.gif) -5px -31px no-repeat;overflow:hidden;}
+
+.wml-p-data-wrap em.dropArr { background:url(http://image.tianji.com/tjs/msPickMap/images/newRebtn.gif) no-repeat;position: absolute;width:32px;height:31px;cursor:pointer;right: 4px;top: 3px;}
+.dropList {position:absolute;background-color:#f9f9f9;border:1px solid;border-color:#e6e6e6;z-index:999;overflow:hidden;
+	-webkit-box-shadow: #e9e9e9 0px 0px 3px; 
+	-moz-box-shadow: #e9e9e9 0px 0px 3px; 
+	box-shadow: #e9e9e9 0px 0px 3px;}
+.dropList li {height:30px;line-height:30px;padding-left:10px;font-size:12px;position:relative;padding-right:20px;overflow:hidden;cursor:pointer;}
+.dropList li.even {background-color:#fefefe;}
+.dropList li em.selected {background-position:-5px -56px;height:8px;right:10px;}
+.dropList li:hover,.dropList li.cur {background-color:#ececec;color:#000;}
+.dropList li.disabled {cursor:not-allowed;color:#aaa;}
+.data-sub-error {
+	background-color:#ffb9b9;
+	-webkit-animation:flash 1s .2s ease both;
+	-moz-animation:flash 1s .2s ease both;}
+	@-webkit-keyframes flash{
+	25%,50%,100%{opacity: 1;}
+	25%,75%{opacity: 0;}
+}
+@-webkit-keyframes flash{
+25%,50%,100%{opacity: 1;}
+25%,75%{opacity: 0;}
+}
+@-moz-keyframes flash{
+25%,50%,100%{opacity: 1;}
+25%,75%{opacity: 0;}
+}

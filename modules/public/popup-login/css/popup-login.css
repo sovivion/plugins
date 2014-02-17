@@ -1,0 +1,31 @@
+/*
+ * author : wumingli
+ * for:validator form
+ * developed at : 2013/6/28 14:14
+ * Copyright 2013. All rights reserved.
+ */
+body {height:2000px;}
+#tianji-popup-login,#tianji-popup-login-outer-shade {width:640px;height:336px;position:fixed;background:#fff;left:50%;top:50%;margin-left:-320px;margin-top:-168px;z-index:999;_position:absolute;}
+#tianji-popup-login-outer-shade {width:650px;height:346px;border-radius:5px;background:#000;opacity:0.3;filter:alpha(opacity=30);margin-top:-173px;margin-left:-325px;z-index:998;}
+#tianji-popup-login-shade {width:100%;height:100%;position:fixed;background:#000;z-index:998; opacity:0.45; filter:alpha(opacity=45); _position:absolute;top:0;}
+#tianji-popup-login .pop-left,#tianji-popup-login .pop-right {width:425px;height:335px;overflow:hidden;float:left;position:relative;}
+#tianji-popup-login .pop-left .pop-left-con {width:850px;position:absolute;left:0;top:0;}
+#tianji-popup-login .pop-reg,#tianji-popup-login .pop-login {width:385px;float:left;height:315px;padding-left:35px;}
+#tianji-popup-login .pop-left-con ul li label,#tianji-popup-login b.close,#tianji-popup-login-btn,#tianji-popup-reg-btn {background:url(http://image.tianji.com/tjs/popup-login/images/pop-up-btns.png) no-repeat;}
+#tianji-popup-login .pop-left-con{padding:20px 0 0 20px;width:255px;height:315px;}
+#tianji-popup-login .pop-left-con h3 {font:normal 20px/50px "Microsoft Yahei","SimHei";color:#555;}
+#tianji-popup-login .pop-left-con ul li {height:62px; font-size:12px;color:#d20000;position:relative;}
+#tianji-popup-login .pop-left-con ul li input.txt {height:35px;line-height:35px;border:1px solid #ddd;text-indent:8px;width:280px;outline:none;border-radius:3px;color:#999;}
+#tianji-popup-login .pop-left-con ul li input.focus {border-color:#e55942;box-shadow:0 0 3px #ccc;}
+#tianji-popup-login .pop-left-con ul li span.inputTip {position:absolute;top:12px;left:10px;color:#999;z-index:0;}
+#tianji-popup-login .pop-left-con ul li label {margin:0 135px 0 5px;color:#333;padding-left:20px;background-position:0 -28px;display:inline-block; height:20px;line-height:20px;_background-position:0 -30px;}
+#tianji-popup-login .pop-left-con ul li label.checked {background-position:0 -66px;}
+#tianji-popup-login .pop-left-con ul li a {color:#999;text-decoration:none;}
+#tianji-popup-login .pop-left-con ul li a.fblue {color:#152f9f;}
+#tianji-popup-login .pop-left-con .error { padding:5px 0 0 15px;background:url(http://www.tianji.com/images/case1/login/false.jpg) left 6px no-repeat;*margin-left:10px;}
+#tianji-popup-login-btn,#tianji-popup-reg-btn {width:126px;height:36px;cursor:pointer;background-position:0 -108px;border:none;vertical-align:middle;}
+#tianji-popup-reg-btn {background-position:0 -164px;}
+#tianji-popup-login .pop-right {background:#f8f8f8;width:215px}
+#tianji-popup-login .pop-right .pop-right-con {font-size:12px; color:#999;text-align:center;padding-top:70px;}
+#tianji-popup-login .pop-right a.weiboLogin{display:block; margin:15px auto 0; background:url(http://www.tianji.com/images/case1/login/xinlang.jpg) no-repeat; width:125px; height:26px;text-indent:-300px;overflow:hidden;}
+#tianji-popup-login b.close {position:absolute;right:-15px;top:-15px;background-position:8px 8px;background-color:#5f5f5f;border-radius:13px;width:26px;height:26px;text-align:center;cursor:pointer;z-index:999;display:block;}

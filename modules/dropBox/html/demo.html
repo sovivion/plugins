@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>自定义下拉框API&Demo</title>
+<link rel="stylesheet" href="http://image.tianji.com/tjs/styles/base.css" type="text/css" >
+<style type="text/css">
+#wrap {margin:20px;}
+.wml-p-data-wrap {margin-top:10px;margin-left:10px;position:relative;}
+h2 {height:50px;padding-left:15px;background:#eee;font:bold 18px/50px 'Microsoft Yahei';margin-top:20px;}
+.findByCode {border:1px solid #ccc;padding:10px;margin-bottom:10px;font-size:12px;display:inline-block;}
+div label{vertical-align:middle;position:relative;top:-4px;color:#666}
+.container {display:inline-block;*display:inline;*zoom:1;}
+.subCon {margin-top:30px;padding-left:10px;}
+</style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+    <h2>自定义下拉框API：</h2>
+    <pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#170;"><span style="color:#a50">&lt;!-- 引入以下JS：&lt;script type="text/javascript" src="http://image.tianji.com/tjs/dropBox/js/tjDropBox.min.js"&gt;&lt;/script&gt; --&gt;</span><br><span style="color:#a50">&lt;!-- 用JQuery选择器筛选出元素，如： --&gt;</span><br><span style="color:#06c">&lt;script</span> <span style="color:#00c">type</span>=<span style="color:#a11">"text/javascript"</span><span style="color:#06c">&gt;</span><br>/* 配置参数说明：<br>    name:提交至后台的隐藏input的name<br>    dataName:数据对应name，对应关系如下：<br>    {<br>        gender:性别<br>        salary:期望薪资<br>        companyLevel：公司规模<br>        companyProperty：公司性质<br>        workExperience：工作经验<br>        eduBackground：学历<br>        language：语言类别<br>        lanLS：听说<br>        lanRW：读写<br>        salarySingle：职位薪资<br>    }<br>    text:用于显示的文字，如“请选择【职位薪资】”中的职位薪资，可替换为text<br>    css: 自定义样式，语法为json格式<br>    required: 是否必选项，默认false，可选值：true|false<br>    initCode: 初始化Code值<br>    customData: 自定义数据，此项数据格式为json，注：其键值必须同dataName一致<br>    linkage: 相关联项的选择器，可为ID或class，但元素必须唯一<br>    linkageType: 开始项或结束项，可选值：from|to<br>*/<br><span style="color:#000">$</span>(<span style="color:#a11">'#wml-p-data-wrap2'</span>).<span style="color:#000">dropBox</span>({<br>    <span style="color:#000">name</span>: <span style="color:#a11">'companyXXX'</span>,<br>    <span style="color:#000">dataName</span>: <span style="color:#a11">'companyProperty'</span>,<br>    <span style="color:#000">required</span>: <span style="color:#219">true</span>,<br>    <span style="color:#000">initCode</span>: <span style="color:#a11">'国有企业'</span><br>});<br><span style="color:#06c">&lt;/script</span><span style="color:#06c">&gt;</span></pre>
+    <form method="get" action="" name="testForm" id="testForm">
+        <div class="container"><div id="wml-p-data-wrap" class="wml-p-data-wrap"></div></div>
+        <div class="container"><div id="wml-p-data-wrap1" class="wml-p-data-wrap"></div></div>
+        <div class="container"><div id="wml-p-data-wrap2" class="wml-p-data-wrap"></div></div>
+        <div class="container"><div id="wml-p-data-wrap3" class="wml-p-data-wrap"></div></div>
+        
+        <div class="container"><div id="wml-p-data-wrap4" class="wml-p-data-wrap"></div></div>
+        <div class="container"><div id="wml-p-data-wrap5" class="wml-p-data-wrap"></div></div>
+        <div class="container"><div id="wml-p-data-wrap6" class="wml-p-data-wrap"></div></div>
+        <div class="container"><div id="wml-p-data-wrap7" class="wml-p-data-wrap"></div></div>
+        
+        <div class="container"><div id="wml-p-data-wrap8" class="wml-p-data-wrap"></div></div>
+        <div class="container"><div id="wml-p-data-wrap9" class="wml-p-data-wrap"></div></div>
+        
+        <div class="container"><div id="wml-p-data-wrap10" class="wml-p-data-wrap"></div></div>
+        <div class="container"><div id="wml-p-data-wrap11" class="wml-p-data-wrap"></div></div>
+        
+        <div class="container"><div id="wml-p-data-wrap12" class="wml-p-data-wrap"></div></div>
+        <div class="container"><div id="wml-p-data-wrap13" class="wml-p-data-wrap"></div></div>
+        <div class="subCon" id="subCon">
+            <input type="submit" id="subBtn" value="提交" />
+        </div>
+        <br />
+        <h2>通过Code查找Name：</h2>
+        <br />
+        <pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#a50">&lt;!-- 为要查找name的元素添加自定义属性：data-dropbox-code --&gt;</span><br><span style="color:#a50">&lt;!-- code值可参照数据文件：http://image.tianji.com/tjs/dropBox/js/boxData.js --&gt;</span><br>如：<span style="color:#170">&lt;span</span> <span style="color:#00c">data-dropbox-code</span>=<span style="color:#a11">"cp4"</span> <span style="color:#00c">data-dropbox-name</span>=<span style="color:#a11">"salary"</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/span</span><span style="color:#170">&gt;</span></pre>
+        <div class="findByCode">期望薪资：<span data-dropbox-code="7" data-dropbox-name="salary"></span></div>
+        <div class="findByCode">公司性质：<span data-dropbox-code="cp42" data-dropbox-name="companyProperty"></span></div>
+        <div class="findByCode">工作经验：<span data-dropbox-code="9" data-dropbox-name="workExperience"></span></div>
+    </form>
+</div>
+<script type="text/javascript" src="http://image.tianji.com/tjs/gallery/jquery-1.7.2.min.js"></script>
+<!--<script type="text/javascript" src="http://image.tianji.com/tjs/dropBox/js/tjDropBox.min.js"></script>-->
+<script type="text/javascript" src="../../formValidator/js/formValidator.js"></script>
+<script type="text/javascript" src="../js/boxData.js"></script>
+<script type="text/javascript" src="../js/dropBox.js"></script>
+<script type="text/javascript">
+$(function (){
+    $('#testForm').formValidator({
+        nodeName: 'div',
+        triggerMethod: 'submit'
+    });
+    $('#wml-p-data-wrap').dropBox({
+        dataName: 'gender',
+        css: {
+            width: '130',
+            color: '#f60'
+        },
+        name: 'sex',
+        text: '男女'
+    });
+    $('#wml-p-data-wrap1').dropBox({
+        dataName: 'salary'//,
+        /*initCode: '5000及以上'*/
+    });
+    $('#wml-p-data-wrap2').dropBox({
+        name: 'companyXXX',
+        dataName: 'companyProperty',
+        required: true
+    });
+    $('#wml-p-data-wrap3').dropBox({
+        dataName: 'workExperience',
+        required: true,
+        name: 'workYear'
+    });
+    $('#wml-p-data-wrap4').dropBox({
+        dataName: 'companyLevel'
+    });
+    $('#wml-p-data-wrap5').dropBox({
+        dataName: 'eduBackground',
+        required: true,
+        initCode: '60',
+        css: {
+            width: '200',
+            color: '#f60'
+        }
+    });
+    $('#wml-p-data-wrap6').dropBox({
+        dataName: 'language'
+    });
+    $('#wml-p-data-wrap7').dropBox({
+        dataName: 'lanLS'
+    });
+    $('#wml-p-data-wrap8').dropBox({
+        dataName: 'lanRW'
+    });
+    $('#wml-p-data-wrap9').dropBox({
+        dataName: 'custom',
+        customData: {
+            'custom': {
+                'data': [{
+                    'code': '901',
+                    'name': '自定义数据1'
+                },{
+                    'code': '902',
+                    'name': '自定义数据2222'
+                },{
+                    'code': '903',
+                    'name': '自定义数据自定义数据自定义数据'
+                }],
+                'title': '自定义数据'
+            }
+        },
+        initCode: '901',
+        required: true
+    });
+    $('#wml-p-data-wrap10').dropBox({
+        dataName: 'salarySingle',
+        linkage: '#wml-p-data-wrap11',
+        linkageType: 'from',
+        required: true
+    });
+    $('#wml-p-data-wrap11').dropBox({
+        dataName: 'salarySingle',
+        linkage: '#wml-p-data-wrap10',
+        linkageType: 'to',
+        required: true
+    });
+    $('#wml-p-data-wrap12').dropBox({
+        dataName: 'salary2',
+        linkage: '#wml-p-data-wrap13',
+        linkageType: 'from',
+        customData: {
+            'salary2': {
+                'data': [{
+                    "code": "3000",
+                    "name": "3000"
+                },{
+                    "code": "5000",
+                    "name": "5000"
+                },{
+                    "code": "8000",
+                    "name": "8000"
+                },{
+                    "code": "10000",
+                    "name": "10000"
+                },{
+                    "code": "15000",
+                    "name": "15000"
+                },{
+                    "code": "200000",
+                    "name": "200000"
+                },{
+                    "code": "300000",
+                    "name": "300000"
+                },{
+                    "code": "500000",
+                    "name": "500000"
+                }],
+                'title': '自定义薪资'
+            }
+        }
+    });
+    $('#wml-p-data-wrap13').dropBox({
+        dataName: 'salary2',
+        linkage: '#wml-p-data-wrap12',
+        linkageType: 'to',
+        customData: {
+            'salary2': {
+                'data': [{
+                    "code": "3000",
+                    "name": "3000"
+                },{
+                    "code": "5000",
+                    "name": "5000"
+                },{
+                    "code": "8000",
+                    "name": "8000"
+                },{
+                    "code": "10000",
+                    "name": "10000"
+                },{
+                    "code": "15000",
+                    "name": "15000"
+                },{
+                    "code": "200000",
+                    "name": "200000"
+                },{
+                    "code": "300000",
+                    "name": "300000"
+                },{
+                    "code": "500000",
+                    "name": "300000"
+                }],
+                'title': '自定义薪资'
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

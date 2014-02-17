@@ -1,0 +1,88 @@
+/*
+ * author : wumingli
+ * for : epmplyee analyse
+ * developed at : 2013/6/28 14:14
+ * Copyright 2013. All rights reserved.
+ */
+
+.tipsy { font-size: 10px; position: absolute; padding: 5px; z-index: 100000; font-size: 12px; font-family: '宋体'; }
+.tipsy-inner { background-color: #303030; color: #FFF; max-width: 300px; padding: 5px 8px 4px 8px; text-align: center; }
+
+/* Rounded corners */
+.tipsy-inner { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+
+/* Uncomment for shadow */
+/*.tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/
+
+.tipsy-arrow { position: absolute; width: 0; height: 0; line-height: 0; border: 5px dashed #303030; }
+
+/* Rules to colour arrows */
+.tipsy-arrow-n { border-bottom-color: #303030; }
+.tipsy-arrow-s { border-top-color: #303030; }
+.tipsy-arrow-e { border-left-color: #303030; }
+.tipsy-arrow-w { border-right-color: #303030; }
+
+.tipsy-n .tipsy-arrow { top: 0px; left: 50%; margin-left: -5px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent; }
+.tipsy-nw .tipsy-arrow { top: 0; left: 10px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent;}
+.tipsy-ne .tipsy-arrow { top: 0; right: 10px; border-bottom-style: solid; border-top: none;  border-left-color: transparent; border-right-color: transparent;}
+.tipsy-s .tipsy-arrow { bottom: 0; left: 50%; margin-left: -5px; border-top-style: solid; border-bottom: none;  border-left-color: transparent; border-right-color: transparent; }
+.tipsy-sw .tipsy-arrow { bottom: 0; left: 10px; border-top-style: solid; border-bottom: none;  border-left-color: transparent; border-right-color: transparent; }
+.tipsy-se .tipsy-arrow { bottom: 0; right: 10px; border-top-style: solid; border-bottom: none; border-left-color: transparent; border-right-color: transparent; }
+.tipsy-e .tipsy-arrow { right: 0; top: 50%; margin-top: -5px; border-left-style: solid; border-right: none; border-top-color: transparent; border-bottom-color: transparent; }
+.tipsy-w .tipsy-arrow { left: 0; top: 50%; margin-top: -5px; border-right-style: solid; border-left: none; border-top-color: transparent; border-bottom-color: transparent; }
+/*背景定义*/
+.avatarCon span,.emItem dl dd strong em ,.analyseCon h3.hideText,.analyseCon .em_a .avatarCon .grayBg,.emItem dl dd input,.lessRenmai a{ background:url(../images/employeeBg.png) no-repeat;}
+
+.analyseCon {margin: 0 auto; width:978px; height: 248px; border:1px solid #d8d8d8; border-radius: 3px; background-color:#fafafa;box-shadow:0 1px 2px #eee; text-align:center;position:relative;}
+.analyseCon h3 {font: 16px/20px 'Sim sun'; color: #447e85; margin:30px auto 20px;position:relative;z-index:88;width:250px;height:20px;overflow:hidden;}
+.analyseCon h3.hideText {text-indent:-999px; background-position:45px 0;}
+.avatarCon {margin:0 auto; position:relative;width:82px;height:82px;z-index:91;}
+.yourAvatar {top:15px;}
+.avatarCon img {width: 60px; height: 68px;display:block;position:absolute;left:50%;top:50%;margin-left:-30px;margin-top:-34px;}
+.avatarCon span {display:block;width:82px;height:82px;position:absolute;background-position:-418px 0;left:0;top:0;cursor:pointer;}
+.loadingGif {width:250px;height:45px; background:url(../images/loading.gif) center bottom no-repeat; margin:25px auto; font-family: 'Arial'; position:relative;z-index:88;}
+
+.emItem {position:absolute;z-index:90;left:450px;top:85px;display:none;_width:160px;}
+.emItem .avatarCon {width:60px;height:60px;overflow:hidden;}
+.emItem .avatarCon img {width:50px;height:50px;margin-left:-25px;margin-top:-25px;}
+.emItem .avatarCon span {width:60px;height:60px;background-position:-440px -101px;}
+.emItem .avatarCon, .emItem dl dd {float:left; text-align:left;}
+.emItem dl dt a {display:block;width:60px;height:60px;}
+.emItem dl dd {line-height:20px; padding-left:10px;display:none;}
+.emItem dl dd strong { height:25px; line-height:25px;display:block;}
+.emItem dl dd strong a {float:left;color:#565656;}
+.emItem dl dd strong em { background-position:0 -244px;width:22px;height:20px;float:left;margin-left:5px;}
+.emItem dl dd strong em.renmai2 {background-position:0 -281px;}
+.emItem dl dd p {color:#999; height:20px;overflow:hidden;cursor:default;}
+.emItem dl dd input { height:20px; width:50px; border:none;background-position:-53px -41px;position:relative;cursor:pointer;visibility:hidden;}
+.emItem dl dd input.hover {background-position:-135px -41px;}
+.emItem dl dd input.sendMsg {background-position:-218px -41px;}
+.emItem dl dd input.sendMsgHover {background-position:-303px -41px;}
+.emItem dl dd input.sent {background-position:-303px -86px;}
+
+/*箭头定义*/
+.analyseCon .em_a {position:absolute;display:none;}
+.analyseCon .em_em1 {background:url(../images/alt.png);width:148px;height:63px;display:none;}
+.analyseCon .em_em2 {background:url(../images/alc.png);width:281px;height:32px;}
+.analyseCon .em_em3 {background:url(../images/alb.png?aa);width:123px;height:37px;}
+.analyseCon .em_em4 {background:url(../images/art.png?e);width:251px;height:62px;}
+.analyseCon .em_em5 {background:url(../images/arc.png);width:167px;height:30px;}
+.analyseCon .em_em6 {background:url(../images/arb.png);width:283px;height:50px;}
+
+.analyseCon .em_a .avatarCon {width:43px;height:43px;position:absolute;}
+.analyseCon .em_a .avatarCon a {width:43px;height:43px;display:block;position:absolute;left:0;top:0;}
+.analyseCon .em_a .avatarCon img {width:36px;height:36px;margin-left:-18px;margin-top:-18px;}
+.analyseCon .em_a .avatarCon span,.analyseCon .em_a .avatarCon .grayBg {width:43px;height:43px;background-position:-457px -190px;}
+.analyseCon .em_a .avatarCon .grayBg {background-position:-463px -263px;}
+
+.analyseCon .em_em1 .avatarCon {left:55px;}
+.analyseCon .em_em2 .avatarCon {left: 100px;top:-18px;}
+.analyseCon .em_em3 .avatarCon {left: 45px;top:5px;}
+.analyseCon .em_em4 .avatarCon {left: 130px;top:-5px;}
+.analyseCon .em_em5 .avatarCon {left: 70px;top:-12px;}
+.analyseCon .em_em6 .avatarCon {left: 80px;top:12px;}
+
+/*人脉少提示*/
+.lessRenmai {position:absolute;right:110px;top:80px;display:none;}
+.lessRenmai a {display:block;width:253px;height:59px;background-position:0 -82px;text-indent:-500px;overflow:hidden;}
+.lessRenmai a:hover {background-position:0 -161px;}

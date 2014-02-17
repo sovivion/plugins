@@ -1,0 +1,94 @@
+@charset "utf-8";
+/*css*/
+ul,li {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+a {
+	text-decoration: none;
+}
+.none {
+	display: none;
+}
+.input_form {
+	margin: 0 auto;
+	width: 500px;
+}
+/* .company_name {
+    display: block;
+	width: 310px;
+	height: 35px;
+	line-height: 35px;
+	border: 1px solid #d9d9d9;
+	position: relative;
+    background: none repeat scroll 0 0 transparent;
+	padding-left: 10px;
+} */
+.pop_company {
+	width: 308px;
+	border: 1px solid #d9d9d9;
+    border-top-width: 0;
+    cursor: pointer;  
+    z-index: 9999;  
+}
+
+.pop_company ul li {
+	height: 50px;
+	line-height: 50px;
+	background-color: #fdfdfd;
+	border-bottom: 1px solid #d9d9d9;
+	padding: 0 15px;
+}
+.pop_company ul li.current {
+	background-image: url(images/pop_bg_f.jpg);
+}
+.pop_company ul li.last {
+	border-bottom: none;
+	height: auto;
+	background-color: #f9fafa;
+	text-align: center;
+	line-height: 25px;
+}
+.pop_company ul li.last a {
+	color: #005eac;
+	font-size: 12px;
+}
+.pop_company .company_logo {
+	display: block;
+	float: left;
+	width: 34px;
+	height: 38px;
+	border: 1px solid #ccc;
+}
+.company_logo img {
+	width: 34px;
+	height: 38px;
+}
+.pop_company .company_link {
+	height: 38px;
+	padding: 6px 0;
+}
+
+
+.pop_company .company_other {
+	height: 38px;
+	float: left;
+	line-height: 19px;
+	margin-left: 15px;
+}
+.pop_company .company_call {
+	font-size: 12px;
+	color: #333;
+	height: 19px;
+	overflow: hidden;
+}
+.pop_company .company_count {
+	font-size: 12px;
+	color: #999;
+	float: left;
+	height: 19px;
+}
+.ml30{
+	margin-left: 15px;
+}

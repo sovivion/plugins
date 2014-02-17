@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>天际弹窗登录</title>
+<link href="http://static.tianji.com/stylesheets/reset.css" media="screen" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://image.tianji.com/tjs/gallery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/tj-popup-login.js"></script>
+<meta name="Keywords" content="代码高亮,啄木游弋,公卫研究生" />
+<!--<script type="text/javascript" src="http://image.tianji.com/tjs/popup-login/js/tj-popup-login.js"></script>-->
+<style type="text/css">
+.demo {font-size:14px;margin:30px;}
+.demo h2 {height:50px;padding-left:15px;background:#eee;font:bold 18px/50px 'Microsoft Yahei';margin-top:20px;}
+.demo ul {margin-top:20px;}
+.demo ul li {height:30px;line-height:30px;}
+.demo ul li a {text-decoration:none; color:#06c;}
+</style>
+</head>
+<body>
+<div class="demo">
+    <h2>天际弹窗登录API：</h2>
+    <pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color:green">&lt;!-- 页面引用脚本： 注，基于jQuery，所以要放在jquery文件引用之后--&gt;</span>
+<span style="color:#06c">&lt;script</span> <span style="color:#f30">type</span>=<span style="color:#a11">"text/javascript"</span> <span style="color:#f30">src</span>=<span style="color:#a11">"http://image.tianji.com/tjs/popup-login/js/tj-popup-login.min.js"</span><span style="color:#06c">&gt;</span><span style="color:#06c">&lt;/script</span><span style="color:#06c">&gt;</span>
+<span style="color:green">&lt;!-- 基本状态：默认为登录、保持登录状态为默认选中 --&gt;</span>
+<span style="color:#06c">&lt;a</span> <span style="color:#f30">href</span>=<span style="color:#a11">"javascript:void(0);"</span> <span style="color:#f30">class</span>=<span style="color:#a11">"popup-login"</span><span style="color:#06c">&gt;</span>基本状态：默认为登录、保持登录状态为默认选中<span style="color:#06c">&lt;/a</span><span style="color:#06c">&gt;</span>
+<span style="color:green">&lt;!--默认为登录、保持登录状态为默认不选中，成功跳转链接为job.tianji.com --&gt;</span>    
+<span style="color:#06c">&lt;a</span> <span style="color:#f30">href</span>=<span style="color:#a11">"javascript:void(0);"</span> <span style="color:#f30">class</span>=<span style="color:#a11">"popup-login"</span> <span style="color:#f30">data-checked</span>=<span style="color:#a11">"false"</span> <span style="color:#f30">data-target</span>=<span style="color:#a11">"http://job.tianji.com/"</span><span style="color:#06c">&gt;</span>登录，默认不选中登录状态，成功跳转链接为job.tianji.com<span style="color:#06c">&lt;/a</span><span style="color:#06c">&gt;</span>
+<span style="color:green">&lt;!--默认为注册、保持登录状态为默认选中，注册成功后跳转至首页 --&gt;</span>    
+<span style="color:#06c">&lt;a</span> <span style="color:#f30">href</span>=<span style="color:#a11">"javascript:void(0);"</span> <span style="color:#f30">class</span>=<span style="color:#a11">"popup-login"</span> <span style="color:#f30">data-init</span>=<span style="color:#a11">"register"</span> <span style="color:#f30">data-target</span>=<span style="color:#a11">"http://www.tianji.com/home"</span><span style="color:#06c">&gt;</span>默认为注册、保持登录状态为默认选中，注册成功后跳转至首页<span style="color:#06c">&lt;/a</span><span style="color:#06c">&gt;</span>
+<span style="color:green">&lt;!--默认为注册、保持登录状态为默认不选中 --&gt;</span>    
+<span style="color:#06c">&lt;a</span> <span style="color:#f30">href</span>=<span style="color:#a11">"javascript:void(0);"</span> <span style="color:#f30">class</span>=<span style="color:#a11">"popup-login"</span> <span style="color:#f30">data-init</span>=<span style="color:#a11">"register"</span> <span style="color:#f30">data-checked</span>=<span style="color:#a11">"false"</span><span style="color:#06c">&gt;</span>默认为注册、保持登录状态为默认不选中<span style="color:#06c">&lt;/a</span><span style="color:#06c">&gt;</span></pre>
+
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color:green;">//可选属性列表：</span>
+{
+    <span style="color:#a11">"data-checked"</span>: <span style="color:#219">true</span>,   <span style="color:green">//保持登录状态checkbox是否默认勾选，可选值：true|false，默认值：true</span>
+    <span style="color:#a11">"data-init"</span>: <span style="color:#a11">"login"</span>,   <span style="color:green">//点击打开弹窗登录默认显示登录或者注册，可选值："login"|"register"，默认值："login"</span>
+    <span style="color:#a11">"data-target"</span>: <span style="color:#a11">""</span>       <span style="color:green">//注册或登录后的跳转链接，默认为跳转回当前页，可指定任意URL，请以http开头</span>
+}</pre>
+    <h2>普通链接添加事件监听：</h2>
+    <pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color:#000">$</span>(<span style="color:#a11">'#test1'</span>).<span style="color:#000">click</span>(<span style="color:#00f">function</span> (){
+    <span style="color:#00f">var</span> <span style="color:#00f">$this</span> = <span style="color:#000">$</span>(<span style="color:#000-2">this</span>);
+    <span style="color:#000">$</span>.<span style="color:#000">ajax</span>(<span style="color:#a11">'aaa.html'</span>,{
+        <span style="color:#000">type</span>: <span style="color:#a11">'get'</span>,
+        <span style="color:#000">statusCode</span>: {
+            <span style="color:#164">404</span>: <span style="color:#00f">function</span> (){
+                <span style="color:#000">frameCreate</span>(<span style="color:#000-2">$this</span>.<span style="color:#000">attr</span>(<span style="color:#a11">'data-target'</span>));
+            },
+            <span style="color:#164">500</span>: <span style="color:#00f">function</span> (){
+                <span style="color:#000">frameCreate</span>(<span style="color:#000-2">$this</span>.<span style="color:#000">attr</span>(<span style="color:#a11">'data-target'</span>));
+            }
+        }
+    });
+    });
+    </pre>
+    <h2>运用实例：</h2>
+    <ul>
+        <li>
+            <!-- 基本状态：默认为登录、保持登录状态为默认选中 -->
+            <a href="javascript:void(0);" class="popup-login">·基本状态：默认为登录、保持登录状态为默认选中</a>
+        </li>
+        <li>
+            <!--默认为登录、保持登录状态为默认不选中，成功跳转链接为job.tianji.com -->    
+            <a href="javascript:void(0);" class="popup-login" data-checked="false" data-target="http://job.tianji.com/">·登录，默认不选中登录状态，成功跳转链接为job.tianji.com</a>
+        </li>
+        <li>
+            <!--默认为注册、保持登录状态为默认选中，注册成功后跳转至首页 -->    
+            <a href="javascript:void(0);" class="popup-login" data-init="register" data-target="http://www.tianji.com/home">·默认为注册、保持登录状态为默认选中，注册成功后跳转至首页http://www.tianji.com/home</a>
+        </li>
+        <li>
+            <!--默认为注册、保持登录状态为默认不选中 -->    
+            <a href="javascript:void(0);" class="popup-login" data-init="register" data-checked="false">·默认为注册、保持登录状态为默认不选中</a>
+        </li>
+        <li>
+            <!--默认为注册、保持登录状态为默认不选中 -->    
+            <a href="javascript:void(0);" data-target="http://job.tianji.com/" id="test1">·普通A链接，监听用户是否登录</a>
+        </li>
+    </ul>
+    <br />
+    <select name="">
+        <option>测试IE6遮挡.........</option>
+    </select>
+    <select name="">
+        <option>测试IE6遮挡.........</option>
+    </select>
+    <select name="">
+        <option>测试IE6遮挡.........</option>
+    </select>
+</div>
+<script type="text/javascript">
+$('#test1').click(function (){
+    var $this = $(this);
+    $.ajax('aaa.html',{
+        type: 'get',
+        statusCode: {
+            404: function (){
+                frameCreate($this.attr('data-target'));
+            },
+            500: function (){
+                frameCreate($this.attr('data-target'));
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>行业、城市、职能控件API文档</title>
+	
+	<!-- <link rel="stylesheet" type="text/css" href="http://image.tianji.com/tjs/msPickMap/css/msPickMapStyle.css"> -->
+
+	<script type="text/javascript" src="http://image.tianji.com/tjs/common/initCss.min.js?
+msPickStyle.min=image.tianji.com/tjs/msPickMap/css/&clearCache=1.0.8-dev" 
+id="pageCssInit"></script>
+
+
+
+	<style type="text/css">
+		h3{font-size: 24px; padding: 8px 0 ; }
+		body{padding-bottom: 300px;}
+		body > div, h3{margin: 0 auto; text-align: left;}
+		
+		.divstyle{ border: 1px solid #efefef; margin-bottom: 20px; background: #f9f9f9; padding: 20px; border-radius:5px; }
+		h1{background: #ccc;}
+	</style>
+</head>
+<body>
+
+<h1 style="text-align:center; background:#fff;padding-top:30px">行业、城市、职能控件API文档</h1>
+<div class="divstyle">
+	
+	1、在head中用script标签引入CSS文件：<br/>
+
+	 src="http://image.tianji.com/tjs/common/initCss.min.js?msPickStyle.min=image.tianji.com/tjs/msPickMap/css/&clearCache=日期" id="pageCssInit"
+
+	<!-- http://image.tianji.com/tjs/msPickMap/css/msPickMapStyle.css --><br/><br/>
+
+	2、在head中用script标签引入库文件：<br/>
+	http://image.tianji.com/tjs/gallery/jquery-1.7.2.min.js<br/>
+	http://image.tianji.com/tjs/gallery/underscore-min.js<br/><br/>
+
+	
+<!-- 
+	依懒核心文件<br/>
+	publicFn.js<br/><br/>
+	数据文件+配置文件<br/>
+ -->
+	
+	
+	3、在body结束之前用script标签引入js文件：<br/>
+
+	src="http://image.tianji.com/tjs/common/initJs.min.js?
+	publicFn.min=image.tianji.com/tjs/msPickMap/js/&function.min=image.tianji.com/tjs/msPickMap/js/&city.min=image.tianji.com/tjs/msPickMap/js/&indu
+	stry.min=image.tianji.com/tjs/msPickMap/js/&clearCache=日期" id="pageScriptInit"
+
+	<br/><br/>
+	注释：<br/>
+
+	http://image.tianji.com/tjs/common/initJs.min.js[为启动文件]<br/>
+
+	publicFn.min=image.tianji.com/tjs/msPickMap/js/  [publicFn.min为文件名,image.tianji.com/tjs/msPickMap/js/ 为该文件的地址]<br/>
+	
+	<p style="color:red">clearCache=日期 [为清除initJs.min.js的缓存 ,此处要跟着项目走，可以给个日期值来清除缓存 clearCache=日期]</p>
+	
+	插件调用的公共js文件<br/>
+	publicFn.min.js<br/><br/>
+	插件文件<br/>
+	城市：http://image.tianji.com/tjs/msPickMap/js/city.min.js<br/>
+	职能：http://image.tianji.com/tjs/msPickMap/js/function.min.js<br/>
+	行业：http://image.tianji.com/tjs/msPickMap/js/industry.min.js<br/>
+	<p style="color:red">页面中请按需要引入相应的js文件</p>
+	<!-- 
+	证书：证书data.js + defaultMapFn.js<br/>
+	技能：技能data.js + defaultMapFn.js<br/> -->
+	
+	4、在引入js文件之后调用接口
+
+	<p>具体引入文件方式请参照demo</p>
+
+	<p style="text-align:right; color:red">更新日期2013年7月22日</p>
+	
+</div>
+
+
+<div class="divstyle">
+<pre>
+<h1>行业: msDefaultPlugin</h1>
+<h3>依懒文件</h3>
+	
+<h3>参数设置</h3>
+var industryComData = [],industryDefault = [];
+//industryComData = ["101","102","103","104"];	//设置常用数据
+industryDefault = ["101","102"];	//设置默认值
+
+$("#p-data-wrap1").msDefaultPlugin({
+		
+	type:'industry',	//类型可为 industry必填
+	check:'checkbox',	//可设置为 radio/checkbox 默认为checkbox可省略
+	maxCount:5,		//多选下的最多选择条数,如为单选可删除
+	column:4,		//默认为6列,列数根据字数多少来设置
+	allDataMap:industryDataMap,	//配置不同的数据源,此处为行业数据 必需有。
+	comData:industryComData,	//配置常用数据可删除
+	init:industryDefault,	//配置默认值，无默认值可删除
+	name:'industryCode_',//设置隐藏input的name属性值。
+	defaultValue:'自定义',	//默认是 请选择行业。 可自定义,大于5个字时需要调input宽度。
+	style:{	//设置部分元素样式
+		"foldHeadWidth":"120px",
+		"msCbComponent":"165px",
+		"msOkWidth":"250px"
+	},
+	align:"left"	//设置下拉对齐方式,可设置left/right不设置,默认是left
+});
+</pre>
+</div>
+
+<div class="divstyle">
+<pre>
+<h1>城市: msCityPlugin</h1>
+<h3>参数设置</h3>
+var cityComData=[],cityDefault=[];
+	
+cityComData = ["北京","天津","上海","重庆","石家庄","唐山"]; //设置常用数据
+cityDefault = ["石家庄","北京"];	//设置默认值
+
+
+$("#p-data-wrap").msCityPlugin({
+		type:'city',	//默认为city可省略
+		check:'checkbox',	//可设置为 radio/checkbox 默认为checkbox可省略
+		maxCount:3,		//多选下的最多选择条数,默认为5条,如为5条可省略
+		column:6,		//默认为6列此处可省
+		allDataMap:cityDataMap,	//配置不同的数据源,此处为城市数据 必需有。
+		comData:cityComData,	//配置常用数据可删除
+		init:cityDefault,	//配置默认值，无默认值可删除
+		name:'cityCode_', //设置隐藏input的name属性值。默认为cityCode,见意按需要自已设置。
+		defaultValue:'自定义',	//默认是 请选择城市。 可自定义,大于5个字时需要调input宽度。
+		style:{		//设置部分元素样式
+			"foldHeadWidth":"165px",
+			"msCbComponent":"130px",
+			"msOkWidth":"200px"
+		},
+		align:"left"	//设置下拉对齐方式,可设置left/right不设置,默认是left
+});
+</pre>
+</div>
+
+<div class="divstyle">
+<pre>
+<h1>职能: msJobPlugin</h1>
+<h3>参数设置</h3>
+var jobDefault = [],jobComData=[];
+
+jobDefault = ["1","2"];//设置默认值
+//jobComData = ["1","2"];//设置常用数据
+
+$("#p-data-wrap2").msJobPlugin({
+	type:'job',	//默认为job可省略
+	check:'checkbox',	//可设置为 radio/checkbox 默认为checkbox可省略
+	maxCount:5,		//多选下的最多选择条数,默认为5条,如为5条可省略
+	column:3,		//默认为6列
+	allDataMap:jobDataMap,	//配置不同的数据源,此处为职能数据 必需有。
+	comData:jobComData, //配置常用数据可删除
+	init:jobDefault,	//配置默认值，无默认值可删除
+	name:'jobCode_',//设置隐藏input的name属性值。默认为cityCode,见意按需要自已设置。
+	defaultValue:'自定义',	//默认是 请选择职能。 可自定义,大于5个字时需要调input宽度。
+	style:{		//设置部分元素样式
+		"foldHeadWidth":"165px",
+		"msCbComponent":"130px",
+		"msOkWidth":"200px"
+	},
+	align:"left"	//设置下拉对齐方式,可设置left/right不设置,默认是left
+});
+</pre>
+</div>
+
+<div class="divstyle">
+<h1>Demo for checkbox</h1>
+	<!-- <h3>证书：</h3>
+	<div class="p-data-wrap" id="p-data-wrap5" style="z-index:5" defaultData = "101,102"></div>
+	<select>
+		<option>test IE6 遮挡</option>
+	</select> -->
+
+	<h3>地区：</h3>
+	<div class="p-data-wrap" id="p-data-wrap" style="z-index:4"></div>
+	<select>
+		<option>test IE6 遮挡</option>
+	</select>
+
+
+	<h3>行业：</h3>
+	<div class="p-data-wrap" id="p-data-wrap1" style="z-index:3"></div>
+	<select>
+		<option>test IE6 遮挡</option>
+	</select>
+
+	<h3>职能：</h3>
+	<div class="p-data-wrap" id="p-data-wrap2" style="z-index:2"></div>
+	<select>
+		<option>test IE6 遮挡</option>
+	</select>
+
+<!-- 
+	<h3>技能：</h3>
+	<div class="p-data-wrap" id="p-data-wrap3" style="z-index:1"></div>
+	<select>
+		<option>test IE6 遮挡</option>
+	</select> -->
+</div>	
+
+<div style="margin-top:100px"></div>
+
+<div class="divstyle">
+<h1>Demo for radio</h1>
+<!-- 
+	<h3>证书：</h3>
+	<div class="p-data-wrap" id="p-data-wrap5_" style="z-index:5" defaultData = "101,102"></div>
+	<select>
+		<option>test IE6 遮挡</option>
+	</select>
+ -->
+	<h3>地区：</h3>
+	<div class="p-data-wrap" id="p-data-wrap_" style="z-index:4"></div>
+	<select>
+		<option>test IE6 遮挡</option>
+	</select>
+
+
+	<h3>行业：</h3>
+	<div class="p-data-wrap" id="p-data-wrap1_" style="z-index:3"></div>
+	<select>
+		<option>test IE6 遮挡</option>
+	</select>
+
+	<h3>职能：</h3>
+	<div class="p-data-wrap" id="p-data-wrap2_" style="z-index:2"></div>
+	<select>
+		<option>test IE6 遮挡</option>
+	</select>
+
+<!-- 
+	<h3>技能：</h3>
+	<div class="p-data-wrap" id="p-data-wrap3_" style="z-index:1"></div>
+	<select>
+		<option>test IE6 遮挡</option>
+	</select> -->
+</div>	
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript" src="http://image.tianji.com/tjs/gallery/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="http://image.tianji.com/tjs/gallery/underscore-min.js"></script>
+ <!-- 
+	<script type="text/javascript" src="../js/cityDataMap.js"></script>
+	<script type="text/javascript" src="../js/industryDataMap.js"></script>
+	<script type="text/javascript" src="../js/jobDataMap.js"></script>
+	
+	<script type="text/javascript" src="../js/publicFn.js"></script>
+	
+	<script type="text/javascript" src="../js/defaultMapFn.js"></script>
+	<script type="text/javascript" src="../js/cityMapFn.js"></script>
+	<script type="text/javascript" src="../js/jobMapFn.js"></script>
+ -->
+
+	<script type="text/javascript" src="http://image.tianji.com/tjs/common/initJs.min.js?
+publicFn.min=image.tianji.com/tjs/msPickMap/js/&function.min=image.tianji.com/tjs/msPickMap/js/&city.min=image.tianji.com/tjs/msPickMap/js/&indu
+stry.min=image.tianji.com/tjs/msPickMap/js/&clearCache=1.0.8-dev" id="pageScriptInit"></script>
+
+
+
+
+
+	<script type="text/javascript">
+	$(function(){
+/*
+		var certificateComData = [],certificateDefault = [];
+	certificateComData = ["101","102","103","104"];
+	certificateDefault = ["101","102"];
+	
+	$("#p-data-wrap5").msDefaultPlugin({
+		
+		type:'certificate',	
+		check:'checkbox',	//单选/多选
+		maxCount:5,		//多选下的最多选择条数
+		column:4,		//列数
+		allDataMap:industryDataMap,	//配置不同的数据map
+		comData:certificateComData,
+		init:certificateDefault,
+		name:'certificateCode_',//设置隐藏input的name属性值。
+		style:{
+			"foldHeadWidth":"120px",
+			"msCbComponent":"165px",
+			"msOkWidth":"250px"
+		}
+	});
+*/
+
+
+	var industryComData = [],industryDefault = [];
+	industryComData = ["101","102","103","104"];
+	industryDefault = ["101","102"];
+	
+	$("#p-data-wrap1").msDefaultPlugin({
+		
+		type:'industry',	
+		column:4,		
+		allDataMap:industryDataMap,	
+		comData:industryComData,	
+		init:industryDefault,	
+		name:'industryCode_',
+		style:{
+			"foldHeadWidth":"120px",
+			"msCbComponent":"165px",
+			"msOkWidth":"250px"
+		}
+	});
+/*
+
+	var skillComData = [],skillDefault = [];
+	skillComData = ["101","102","103","104"];
+	skillDefault = ["101","102"];
+	
+	$("#p-data-wrap3").msDefaultPlugin({
+		
+		type:'skill',	
+		check:'checkbox',	//单选/多选
+		maxCount:5,		//多选下的最多选择条数
+		column:4,		//列数
+		allDataMap:industryDataMap,	//配置不同的数据map
+		comData:skillComData,
+		init:skillDefault,
+		name:'skillCode_',//设置隐藏input的name属性值。
+		style:{
+			"foldHeadWidth":"120px",
+			"msCbComponent":"165px",
+			"msOkWidth":"250px"
+		}
+	});
+*/
+	var cityComData=[],cityDefault=[];
+	
+	cityComData = ["北京","天津","上海","重庆","石家庄","唐山"];
+	//cityDefault = ["石家庄","北京"];
+
+
+	$("#p-data-wrap").msCityPlugin({
+			maxCount:3,		
+			allDataMap:cityDataMap,
+			comData:cityComData,
+			init:cityDefault,
+			name:'cityCode_'
+	});
+
+
+	var jobDefault = [],jobComData=[];
+	jobDefault = ["1","2"];
+	jobComData = ["1","2"];
+	$("#p-data-wrap2").msJobPlugin({
+			column:3,
+			allDataMap:jobDataMap,	
+			comData:jobComData,
+			init:jobDefault,
+			name:'jobCode_',
+			style:{
+				"foldHeadWidth":"165px",
+				"msCbComponent":"130px",
+				"msOkWidth":"200px"
+			}
+		});
+
+	})
+	
+
+
+	</script>
+
+
+
+
+
+
+	<script type="text/javascript">
+
+	$(function(){
+/*
+		var certificateComData = [],certificateDefault = [];
+		//certificateComData = ["101","102","103","104"];
+		certificateDefault = ["1001"];
+		
+		$("#p-data-wrap5_").msDefaultPlugin({
+			
+			type:'certificate',	
+			check:'radio',	//单选/多选
+			column:4,		//列数
+			allDataMap:industryDataMap,	//配置不同的数据map
+			comData:certificateComData,
+			init:certificateDefault,
+			name:'certificateCode_',//设置隐藏input的name属性值。
+			style:{
+				"foldHeadWidth":"120px",
+				"msCbComponent":"165px",
+				"msOkWidth":"250px"
+			}
+		});
+
+*/
+
+		var industryComData = [],industryDefault = [];
+		//industryComData = ["101","102","103","104"];
+		industryDefault = ["101"];
+		
+		$("#p-data-wrap1_").msDefaultPlugin({
+			
+			type:'industry',	
+			check:'radio',	
+			column:4,		
+			allDataMap:industryDataMap,	
+			comData:industryComData,
+			init:industryDefault,
+			name:'industryCode_',
+			style:{
+				"foldHeadWidth":"120px",
+				"msCbComponent":"165px",
+				"msOkWidth":"250px"
+			}
+		});
+
+/*
+		var skillComData = [],skillDefault = [];
+		//skillComData = ["101","102","103","104"];
+		skillDefault = ["101"];
+		
+		$("#p-data-wrap3_").msDefaultPlugin({
+			
+			type:'skill',	
+			check:'radio',	//单选/多选
+			column:4,		//列数
+			allDataMap:industryDataMap,	//配置不同的数据map
+			comData:skillComData,
+			init:skillDefault,
+			name:'skillCode_',//设置隐藏input的name属性值。
+			style:{
+				"foldHeadWidth":"120px",
+				"msCbComponent":"165px",
+				"msOkWidth":"250px"
+			}
+		});
+*/
+
+		var cityComData=[],cityDefault=[];
+		//cityComData = ["北京","天津","上海","重庆","石家庄","唐山"];
+		cityDefault = ["石家庄"];
+
+		$("#p-data-wrap_").msCityPlugin({
+				check:'radio',	
+				allDataMap:cityDataMap,	
+				comData:cityComData,
+				init:cityDefault,
+				name:'cityCode_'
+		});
+
+
+
+		var jobDefault = [];
+		jobDefault = ["1"];
+		
+		$("#p-data-wrap2_").msJobPlugin({
+				check:'radio',	
+				column:3,
+				allDataMap:jobDataMap,	
+				init:jobDefault,
+				name:'jobCode_',
+				style:{
+					"foldHeadWidth":"165px",
+					"msCbComponent":"130px",
+					"msOkWidth":"200px"
+				}
+			});
+
+
+	})
+
+	</script>
+
+
+</body>
+</html>

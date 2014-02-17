@@ -1,0 +1,58 @@
+<link href="http://cache.house.sina.com.cn/css/house/css/index/base.css" rel="stylesheet" type="text/css">
+<link href="http://cache.house.sina.com.cn/css/house/css/lanmu/subpages.css" rel="stylesheet" type="text/css">
+<center><div style="background: url(http://src.house.sina.com.cn/imp/imp/deal/18/37/4/94c95315c8b52d5e6d5b148dd41_p1_mk1.jpg) no-repeat center top; width: 547px; padding-top: 40px; height: 300px;">
+
+<div style="margin-top: 10px; margin-left: 40px; width: 430px; height: 180px;">
+<form name="survey_80546" action="http://survey.news.sina.com.cn/polling.php" method="post" target="_blank">
+<table width="480" height="220" border="0" align="left" style="font-size:12px;">
+    <tr>
+    <td><input type="hidden" name="uss_city" value="500100" />
+    姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</td>
+    <td style="text-align:left;"><input type="text" name="q_68269_293182" value="" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="80"><input type="hidden" name="projectid" value="3694" />
+手机号码:</td>
+    <td style="text-align:left;"><input type="text" name="q_68269_293181" value="" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>报名人数:</td>
+    <td style="text-align:left;"><input type="text" name="q_68269_293183" value="" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr height="20">
+    <td>报名时间:</td>
+    <td style="text-align:left;"><input type="text" name="q_68269_293186" id="bmsj" value="" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>意向楼盘:</td>
+    <td style="text-align:left;"><textarea id="q_68269_293184" name="q_68269_" rows="6" cols="30" style="height:30px; width:200px;"></textarea>
+      <input type="image" src="http://i3.sinaimg.cn/dy/deco/2009/0903/survey/submit2.gif" title="提交" style="width:56px; height:23px;vertical-align:middle; padding-bottom:2px;"/></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+    <script type="text/javascript">
+               var d=new Date();
+  document.getElementById("bmsj").value=d.toLocaleDateString();
+               </script>
+        <input type="hidden" name="poll_id" value="80546">
+        <input type="hidden" name="ad_url" value="">      
+</form></div></div>
+</center>

@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>证书、技能控件API文档</title>
+	
+	<!-- <link rel="stylesheet" type="text/css" href="http://image.tianji.com/tjs/msPickMap/css/msPickMapStyle.css"> -->
+
+	<script type="text/javascript" src="http://image.tianji.com/tjs/common/initCss.min.js?
+newSkillCer.min=image.tianji.com/tjs/msPickMap/css/&clearCache=1.0.8-dev" 
+id="pageCssInit"></script>
+
+<!-- 
+	<link rel="stylesheet" type="text/css" href="../css/newSkillCer.css">
+
+ -->
+	<style type="text/css">
+		h3{font-size: 24px; padding: 8px 0 ; }
+		body{padding-bottom: 300px;}
+		body > div, h3{margin: 0 auto; text-align: left;}
+		
+		.divstyle{ border: 1px solid #efefef; margin-bottom: 20px; background: #f9f9f9; padding: 20px; border-radius:5px; }
+		h1{background: #ccc;}
+	</style>
+
+	<script type="text/javascript" src="http://image.tianji.com/tjs/gallery/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="http://image.tianji.com/tjs/gallery/underscore-min.js"></script>
+
+</head>
+<body>
+
+<h1 style="text-align:center; background:#fff;padding-top:30px">证书、技能控件API文档</h1>
+<div class="divstyle">
+	
+	1、在head中用script标签引入CSS文件：<br/>
+
+	 src="http://image.tianji.com/tjs/common/initCss.min.js?msPickStyle.min=image.tianji.com/tjs/msPickMap/css/&clearCache=日期" id="pageCssInit"
+
+	<!-- http://image.tianji.com/tjs/msPickMap/css/msPickMapStyle.css --><br/><br/>
+
+	2、在head中用script标签引入库文件：<br/>
+	http://image.tianji.com/tjs/gallery/jquery-1.7.2.min.js<br/>
+	http://image.tianji.com/tjs/gallery/underscore-min.js<br/><br/>
+
+	
+<!-- 
+	依懒核心文件<br/>
+	publicFn.js<br/><br/>
+	数据文件+配置文件<br/>
+ -->
+	
+	
+	3、在body结束之前用script标签引入js文件：<br/>
+
+	src="http://image.tianji.com/tjs/common/initJs.min.js?
+publicFn.min=image.tianji.com/tjs/msPickMap/js/&skillDataMap.min=image.tianji.com/tjs/msPickMap/js/&certificateDataMap.min=image.tianji.com/tjs/msPickMap/js/&defaultMapFn.min=image.tianji.com/tjs/msPickMap/js/&clearCache=1.0.8-dev" id="pageScriptInit"
+
+	<br/><br/>
+	注释：<br/>
+
+	http://image.tianji.com/tjs/common/initJs.min.js[为启动文件]<br/>
+
+	publicFn.min=image.tianji.com/tjs/msPickMap/js/  [publicFn.min为文件名,image.tianji.com/tjs/msPickMap/js/ 为该文件的地址]<br/>
+	
+	<p style="color:red">clearCache=日期 [为清除initJs.min.js的缓存 ,此处要跟着项目走，可以给个日期值来清除缓存 clearCache=日期]</p>
+	
+	插件调用的公共js文件<br/>
+	publicFn.min.js<br/><br/>
+	数据文件<br/>
+	证书：http://image.tianji.com/tjs/msPickMap/js/certificateDataMap.min.js<br/>
+	技能：http://image.tianji.com/tjs/msPickMap/js/skillDataMap.min.js<br/><br/>
+	
+	证书、技能公用文件<br/>
+	http://image.tianji.com/tjs/msPickMap/js/defaultMapFn.min.js<br/>
+
+	<p style="color:red">页面中请按需要引入相应的js文件</p>
+	<!-- 
+	证书：证书data.js + defaultMapFn.js<br/>
+	技能：技能data.js + defaultMapFn.js<br/> -->
+	
+	4、在引入js文件之后调用接口
+
+	<p>具体引入文件方式请参照demo</p>
+
+	<p style="text-align:right; color:red">更新日期2013年7月22日</p>
+	
+</div>
+
+
+<div class="divstyle">
+<pre>
+<h1>证书、技能: msDefaultPlugin</h1>
+<h3>依懒文件</h3>
+	
+<h3>参数设置</h3>
+var industryComData = [],industryDefault = [];
+//industryComData = ["101","102","103","104"];	//设置常用数据
+industryDefault = ["101","102"];	//设置默认值
+
+$("#p-data-wrap-sc1").msDefaultPlugin({
+		
+	type:'industry',	//类型可为 industry,skill,certificate ，必填
+	check:'checkbox',	//可设置为 radio/checkbox 默认为checkbox可省略
+	maxCount:5,		//多选下的最多选择条数,如为单选可删除
+	column:4,		//默认为6列,列数根据字数多少来设置
+	allDataMap:industryDataMap,	//配置不同的数据源,此处为行业数据 必需有。
+	comData:industryComData,	//配置常用数据可删除
+	init:industryDefault,	//配置默认值，无默认值可删除
+	name:'industryCode_',//设置隐藏input的name属性值。
+	defaultValue:'自定义', //默认是 请选择技能 可自定义,大于5个字时需要调input宽度。
+	style:{	//设置部分元素样式
+		"foldHeadWidth":"120px",
+		"msCbComponent":"165px",
+		"msOkWidth":"250px"
+	},
+	align:"left"	//设置下拉对齐方式,可设置left/right不设置,默认是left
+});
+</pre>
+</div>
+
+
+
+<div class="divstyle">
+<h1>Demo for checkbox</h1>
+	 <h3>证书：</h3>
+	<div class="p-data-wrap-sc" id="p-data-wrap-sc5" style="z-index:5"></div>
+	<!-- <div style="clear:both"></div> -->
+	<select>
+		<option>test IE6 遮挡</option>
+	</select> 
+
+	<h3>技能：</h3>
+	<div class="p-data-wrap-sc" id="p-data-wrap-sc3" style="z-index:1"></div>
+	<select>
+		<option>test IE6 遮挡</option>
+	</select> 
+</div>	
+
+<div style="margin-top:100px"></div>
+
+<div class="divstyle">
+<h1>Demo for radio</h1>
+ 
+	<h3>证书：</h3>
+	<div class="p-data-wrap-sc" id="p-data-wrap-sc5_" style="z-index:5"></div>
+	<select>
+		<option>test IE6 遮挡</option>
+	</select>
+
+
+	<h3>技能：</h3>
+	<div class="p-data-wrap-sc" id="p-data-wrap-sc3_" style="z-index:1"></div>
+	<select>
+		<option>test IE6 遮挡</option>
+	</select>
+</div>	
+
+
+
+	<script type="text/javascript" src="http://image.tianji.com/tjs/common/initJs.min.js?certificateDataMap.min=image.tianji.com/tjs/msPickMap/js/&skillDataMap.min=image.tianji.com/tjs/msPickMap/js/&newSkillCerFn.min=image.tianji.com/tjs/msPickMap/js/&clearCache=1.0.8-dev" id="pageScriptInit"></script>
+
+<!-- 
+ 	<script type="text/javascript" src="../js/certificateDataMap.js"></script>
+ 	<script type="text/javascript" src="../js/skillDataMap.js"></script>
+ 	<script type="text/javascript" src="../js/newSkillCerFn.js"></script>
+ -->
+	<!-- 
+	<script type="text/javascript" src="../js/skillCerFn.js"></script>
+	
+	 -->
+
+	<script type="text/javascript">
+	$(function(){
+
+		var certificateComData = [],certificateDefault = [];
+		//certificateComData = ["托福","托业","GRE","uuuuuuuuuuu"];
+		//certificateDefault = ["托福","托业"];
+		
+		$("#p-data-wrap-sc5").msSkillCerPlugin({
+			
+			type:'certificate',	
+			check:'checkbox',	
+			maxCount:5,		
+			column:3,		
+			allDataMap:certificateDataMap,	
+			comData:certificateComData,
+			init:certificateDefault,
+			name:'certificateCode_',
+			defaultValue:'请选择证书',
+			style:{
+				"foldHeadWidth":"150px",
+				"msCbComponent":"260px",
+				"msOkWidth":"270px"
+			}
+		});
+
+		var skillComData = [],skillDefault = [];
+		//skillComData = ["Word","Excel","PowerPoint","Visio"];
+		//skillDefault = ["Word","Excel"];
+		
+		$("#p-data-wrap-sc3").msSkillCerPlugin({
+			
+			type:'skill',	
+			check:'checkbox',	
+			maxCount:5,		
+			column:4,		
+			allDataMap:skillDataMap,	
+			comData:skillComData,
+			init:skillDefault,
+			name:'skillCode_',
+			style:{
+				"foldHeadWidth":"120px",
+				"msCbComponent":"165px",
+				"msOkWidth":"250px"
+			}
+		});
+
+
+	});
+	</script>
+
+	<script type="text/javascript">
+
+	$(function(){
+
+		var certificateComData = [],certificateDefault = [];
+		//certificateComData = ["101","102","103","104"];
+		//certificateDefault = ["托福"];
+		
+		$("#p-data-wrap-sc5_").msSkillCerPlugin({
+			
+			type:'certificate',	
+			check:'radio',	
+			column:3,		
+			allDataMap:certificateDataMap,	
+			comData:certificateComData,
+			init:certificateDefault,
+			name:'certificateCode_',
+			style:{
+				"foldHeadWidth":"150px",
+				"msCbComponent":"260px",
+				"msOkWidth":"250px"
+			}
+		});
+
+
+		var skillComData = [],skillDefault = [];
+		//skillComData = ["101","102","103","104"];
+		//skillDefault = ["Excel"];
+		
+		$("#p-data-wrap-sc3_").msSkillCerPlugin({
+			
+			type:'skill',	
+			check:'radio',	
+			column:4,		
+			allDataMap:skillDataMap,	
+			comData:skillComData,
+			init:skillDefault,
+			name:'skillCode_',
+			style:{
+				"foldHeadWidth":"120px",
+				"msCbComponent":"165px",
+				"msOkWidth":"250px"
+			}
+		});
+
+
+	})
+
+	</script>
+
+
+</body>
+</html>

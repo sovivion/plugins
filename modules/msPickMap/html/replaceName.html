@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>处理网页中code找name</title>
+	<style type="text/css">
+		h3{font-size: 24px; padding: 8px 0 ; }
+		body > div, h3{ text-align: left;}
+		.miaoshu{ border: 1px solid #efefef; background: #f9f9f9; padding: 20px; border-radius:5px; }
+	</style>
+</head>
+<body>
+	<h1 style="text-align:center; background:#fff;padding-top:30px">处理网页中code找name</h1>
+	<h3>通过给span 加class 和自定义code属性的方式 用findDataName.js 把name值插入到span标签里</h3>
+	<div class="miaoshu">
+		
+		1、在head中用script标签引入库文件：<br/>
+		http://image.tianji.com/tjs/gallery/jquery-1.7.2.min.js <br/><br/>
+		
+		<!-- 
+		
+		 -->
+
+		2、在body结束之前用script标签引入js文件<br/>
+		src="http://image.tianji.com/tjs/common/initJs.min.js?
+industryDataMap.min=image.tianji.com/tjs/msPickMap/js/&jobDataMap.min=image.tianji.com/tjs/msPickMap/js/&findDataName.min=image.tianji.com/tjs/msPickMap/js/&clearCache=日期" id="pageScriptInit"
+		
+		<br/><br/>
+		注释：<br/>
+
+		http://image.tianji.com/tjs/common/initJs.min.js[为启动文件]<br/>
+
+		function.min=image.tianji.com/tjs/msPickMap/js/  [function为文件名,image.tianji.com/tjs/msPickMap/js/ 为该文件的地址]<br/>
+		
+		<p style="color:red">clearCache=日期 [为清除initJs.min.js的缓存 ,此处要跟着项目走，可以给个日期值来清除缓存 clearCache=日期]</p>
+		
+		数据文件地址：<br/>
+		职能：http://image.tianji.com/tjs/msPickMap/js/jobDataMap.min.js<br/>
+		行业：http://image.tianji.com/tjs/msPickMap/js/industryDataMap.min.js
+		<p style="color:red">页面中请按需要引入相应的js文件</p>
+
+		<p>具体引入文件方式请参照demo</p>
+		<p style="text-align:right; color:red">更新日期2013年7月22日</p>
+	</div>
+
+	
+	<h3>demo</h3>
+	<span class="industryC" code="70dsfsdfsd002"></span><br/>
+
+	<span class="industryC" code="701"></span><br/>
+	<span class="industryC" code="702"></span><br/>
+	<span class="industryC" code="703"></span><br/>
+
+	<span class="jobC" code="100sdfdsf00"></span><br/>
+
+	<span class="jobC" code="1"></span><br/>
+	<span class="jobC" code="2"></span><br/>
+	<span class="jobC" code="3"></span><br/>
+	
+	
+	<span class="industryC" code="701,702"></span><br/>
+	
+	<span class="jobC" code="1,2,4"></span><br/>
+
+	<script type="text/javascript" src="http://image.tianji.com/tjs/gallery/jquery-1.7.2.min.js"></script>
+<!-- 
+	<script type="text/javascript" src="../js/industryDataMap.js"></script>
+	<script type="text/javascript" src="../js/jobDataMap.js"></script>
+	<script type="text/javascript" src="../js/findDataName.js"></script>
+ -->
+	
+	<script type="text/javascript" src="http://image.tianji.com/tjs/common/initJs.min.js?
+industryDataMap.min=image.tianji.com/tjs/msPickMap/js/&jobDataMap.min=image.tianji.com/tjs/msPickMap/js/&findDataName.min=image.tianji.com/tjs/msPickMap/js/&clearCache=1.0.8-dev" id="pageScriptInit"></script>
+
+
+
+
+</body>
+</html>
