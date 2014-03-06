@@ -8,7 +8,7 @@
 			zIndex:10000,
 			alpha:75,
 			background:"#000",
-			callback: null
+			callback: null 
 		};
 
 		var opacity = $.extend({},defaults,options);
