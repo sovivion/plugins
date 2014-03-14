@@ -1,0 +1,44 @@
+ul li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+#slider{
+    width: 490px;
+    height: 170px;
+    margin: 50px auto;
+    position: relative;
+    overflow: hidden;
+}
+#slider ul.slider_img {
+    width: 2450px;
+    height: 170px;
+    overflow: hidden;
+    _zoom: 1;
+    position: absolute;
+}
+#slider ul.slider_img li{
+    width: 490px;
+    float: left;
+}
+#slider ul.slider_nav {
+    width: 200px;
+    height: 30px;
+    overflow: hidden;
+    _zoom: 1;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+}
+#slider ul.slider_nav li {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    margin-right: 10px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 12px;
+    background-color: #ff6600;
+    color: #fff;
+    float: left;
+}
