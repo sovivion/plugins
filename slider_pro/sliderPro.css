@@ -1,0 +1,48 @@
+html,body{
+	margin: 0;
+	padding: 0;	
+}
+.wrap {
+	width: 1000px;
+	height: 600px;
+	margin: 0 auto;
+}
+#content {
+	width: 600px;
+	height: 400px;
+	overflow: hidden;
+	position: relative;
+	background-color: blue;	
+}
+#content ul {
+	margin: 0;
+	padding: 0;
+}
+#content ul li {
+	width: 600px;
+	height: 400px;
+	float: left;
+	margin: 0;
+	position: relative;
+}
+#content ul li img {
+	border: 0;
+}
+#prev {
+	width: 40px;
+	height: 28px;
+	position: absolute;
+	left:10px;
+	top: 186px;
+	background-color: red;
+	cursor: pointer;
+}
+#next {
+	width: 40px;
+	height: 28px;
+	position: absolute;
+	right:10px;
+	top: 186px;
+	background-color: red;
+	cursor: pointer;
+}
