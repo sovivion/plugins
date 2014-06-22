@@ -12,18 +12,23 @@
 			sliderBox.style.left = sliderBoxLeft + "px";
 			sliderBox.style.top = sliderBoxtop + "px";
 
+			var sliderBoxWidth = sliderBox.clientWidth,
+				sliderBoxHeight = sliderBox.clientHeight;
+			var per = sliderBoxWidth / sliderBoxHeight;
+
 			//预加载前三张
 			var oUl = sliderBox.children[0];
 				oLi = oUl.children;
 				oUl.style.position = "absolute";
 				oUl.style.left = 0 + "px";
-			for(var i = 0; i<3; i++){
-				//srcAdr.push(oLi[i].children[0].getAttribute("asrc"));
-				//oLi[i].children[0].setAttribute("src",srcAdr[i]);				
+
+			for(var i = 0; i<oLi.length; i++) {
 				var image = oLi[i].children[0];
-				EventUtil.addHandler(window, "load", loadImage(image));
 				EventUtil.addHandler(image, "load", setPic(image));
-				oLi[0].setAttribute("class","curr");
+				if(i < 3) {
+					loadImage(image);
+					oLi[0].setAttribute("class","curr");
+				}
 			}
 			//图片加载
 			function loadImage(arg){
@@ -32,24 +37,33 @@
 			}
 			//图片等比绽放
 			function setPic(arg){
-				var sliderBoxWidth = sliderBox.clientWidth,
-					sliderBoxHeight = sliderBox.clientHeight,
-					per = sliderBoxHeight/sliderBoxWidth,
-					imageWidth = arg.clientWidth,
-					imageHeight = arg.clientHeight,
-					newImageWidth = newImageHeight = newPer = 0;
-				if (imageWidth > imageHeight) {
-					arg.style.width = sliderBoxWidth + "px";
-					newPer = parseInt(arg.style.width)/imageWidth;
-					arg.style.height = newPer * imageHeight + "px";
-					arg.style.marginTop = (sliderBoxHeight - parseInt(arg.style.height))/2 + "px";
-				}
-				if(imageWidth < imageHeight || imageWidth == imageHeight) {
-					arg.style.height = sliderBoxHeight + "px";
-					newPer = parseInt(arg.style.height)/imageHeight;
-					arg.style.width = newPer*imageWidth + "px";
-					arg.style.marginLeft = (sliderBoxWidth - parseInt(arg.style.width))/2 + "px";
-				}		
+				return function(){
+					var w = arg.width;
+					var h = arg.height;
+					var marginTop;
+					var marginLeft;
+
+					if(w / h > per) {
+						if(w > sliderBoxWidth) {
+							h = sliderBoxWidth / w * h;
+							w = sliderBoxWidth;
+						}
+					} else {
+						if(h < sliderBoxHeight) {
+							w = sliderBoxHeight / h * w;
+							h = sliderBoxHeight;
+						}
+					}
+
+					marginLeft = (sliderBoxWidth - w) / 2;
+					marginTop = (sliderBoxHeight - h) / 2;
+
+					arg.style.width = w + 'px';
+					arg.style.height = h + 'px';
+					arg.style.marginTop = marginTop + 'px';
+					arg.style.marginLeft = marginLeft + 'px';
+				}	
+					
 			}
 
 			//轮播效果
@@ -62,21 +76,21 @@
 			function slider(arg){
 				return function(){
 					oUl.style.position = "absolute";
-					if(arg == "next"){
-						
+					if(arg == "next"){						
 						for (var k=0; k<oLi.length; k++) {
 							if (oLi[k].getAttribute("class") == "curr" && oLi[k] != oUl.children[oLi.length - 1]) {
 								oUl.style.left = (parseInt(oUl.style.left)-600) + "px";
 								oLi[k].setAttribute("class", "");
 								oLi[k+1].setAttribute("class", "curr");
-								var image = oLi[k+3].children[0];
-								EventUtil.addHandler(image, "load", loadImage(image));
+								if((k+3)<oLi.length){
+									var image = oLi[k+3].children[0];
+									loadImage(image);
+								}								
 								break;
 							}
 						}
 					}
-					if(arg == "prev"){
-						
+					if(arg == "prev"){						
 						for (var k=0; k<oLi.length; k++) {
 							if (oLi[k].getAttribute("class") == "curr" && oLi[k] != oUl.children[0]) {
 								oUl.style.left = (parseInt(oUl.style.left) + 600) + "px";
@@ -88,6 +102,11 @@
 					}
 				}				
 			}
+
+		//旋转木马
+		function carousel(){
+
+		}
 			
 		}
 		EventUtil.addHandler(window, "load", loadDocument)
