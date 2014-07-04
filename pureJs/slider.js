@@ -54,7 +54,7 @@ function showPic(){
                 */
                 // 位置移动
                 var ops = -(index * $sliderBox.offsetWidth);
-                var opsnow = parseInt($imgUl.style.left = ops);
+                var opsnow = parseInt($imgUl.style.left);
                 function animateMove(){
                     opsnow -= 49;
                     if(ops < opsnow){
