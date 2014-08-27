@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>表单验证</title>
+<link rel="stylesheet" href="../../../styles/base.css" type="text/css" >
+<link rel="stylesheet" type="text/css" href="http://image.tianji.com/tjs/msPickMap/css/msPickStyle.min.css?v=1.0.19-dev">
+<style type="text/css">
+ul li {height:60px;}
+#wrap {margin:50px;}
+form.valForm input.vFormText {border:1px solid;border-color:#c6c6c6 #eee #eee #c6c6c6;height:25px;line-height:25px;width:150px;outline:none;padding-left:5px;}
+form.valForm label {font-size:12px;vertical-align:middle;position:relative;top:-3px;*top:0;_top:2px;margin-left:5px;*margin-left:0;}
+.val_error {margin-top:4px;padding-left:50px;color:#f30;font-size:12px;display:block;height:25px;line-height:25px;}
+.ms-pick .h-tab .tab-menu-component {height:auto;}
+.pdl0 {padding-left:0; font-weight:bold;}
+</style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+    <form method="get" action="" class="valForm">
+        <ul>
+            <li><label>用户名：</label><input type="text" id="name" name="name" placeholder="用户名" validation-config="{'checking':['required', 'maxSize', 'minSize'],'init':[true, 20, 5],'name':'用户名','leftTop':'165,5'}" class="vFormText" /> <span>aaaa</span></li>
+            <li><label>密　码：</label><input type="password" id="password" name="password" placeholder="密码" validation-config="{'checking':['maxSize', 'required', 'minSize'],'init':[20,true,  6],'name':'密码'}" class="vFormText" /></li>
+            <li><label>确　认：</label><input type="password" placeholder="确认密码" validation-config="{'checking':['required', 'minSize', 'compare'],'init':[true, '6', 'password'],'name':'确认密码'}" class="vFormText" /></li>
+            <li><label>邮　箱：</label><input type="text" id="email" name="email" placeholder="邮箱" validation-config="{'checking':['email'],'init':[true],'name':'电子邮箱'}" class="vFormText" /></li>
+            <li><label>地　址：</label><input type="text" id="address" name="address" placeholder="地址" validation-config="{'checking':['chinese', 'maxSize'],'init':[true, 20],'name':'地址'}" class="vFormText" /></li>
+            <li><label>年　龄：</label><input type="text" id="old" name="old" placeholder="年龄" class="vFormText" validation-config="{'checking':['max', 'min'],'init':[110, 10],'name':'年龄'}" /></li>
+            <li><label>电　话：</label><input type="text" id="phone" name="phone" placeholder="电话" class="vFormText" validation-config="{'checking':['phone'],'init':[true],'name':'电话'}" /></li>
+            <li><label>手　机：</label><input type="text" id="mobilePhone" name="mobilePhone" placeholder="手机" class="vFormText" validation-config="{'checking':['mobilePhone'],'init':[true],'name':'手机'}" /></li>
+            <li><label>兴趣爱好：</label><input type="checkbox" id="hobby1" name="hobby" validation-config="{'checking':['required', 'maxSize', 'minSize'],'init':[true,4,2],'name':'兴趣爱好','leftTop':'290 0'}" value="台球" /><label for="hobby1">台球</label> <input type="checkbox" id="hobby2" name="hobby" value="足球" /><label for="hobby2">足球</label> <input type="checkbox" id="hobby3" name="hobby" value="羽毛球" /><label for="hobby3">羽毛球</label> <input type="checkbox" id="hobby4" name="hobby" value="篮球" /><label for="hobby4">篮球</label> <input type="checkbox" id="hobby5" name="hobby" value="高尔夫球" /><label for="hobby5">高尔夫球</label></li>
+            <li><label>性别：</label><input type="radio" id="male" name="sex" validation-config="{'checking':['required'],'init':[true],'name':'性别','leftTop':'80 0'}" /><label for="male">男</label> <input type="radio" id="female" name="sex" /><label for="female">女</label></li>
+            <li><label>期望薪资：</label><div id="wml-p-data-wrap" class="wml-p-data-wrap" validation-config="{'checking':['required'],'init':[true],'name':'期望薪资','cssClass':'pdl0'}"></div></li>
+            <li></li>
+            <li><label>职业职能：</label><br />
+            <select name="zn" id="zn" validation-config="{'checking':['required'],'init':[true],'name':'职业职能','cssClass':'pdl0'}">
+                <option>请选择职业职能</option>
+                <option value="00101">顺便测试IE6遮挡</option>
+                <option value="00102">这是啥啊？！</option>
+            </select>
+            </li>
+            <li>
+                <label>地区：</label>
+	            <div class="p-data-wrap" id="p-data-wrap" style="z-index:4" validation-config="{'checking':['required'],'init':[true],'name':'地区','cssClass':'pdl0'}"></div>
+            </li>
+        </ul>
+        <div style="clear:both;height:50px;"></div>
+        <input type="submit" id="submit" value="提交" style="padding:5px 10px;" />
+    </form>
+</div>
+<!--<script type="text/javascript" src="http://127.0.0.1:8080/workspace/tianji-frontend/dist/common/initJs.min.js?jquery-1.7.2.min=127.0.0.1:8080/workspace/tianji-frontend/gallery/&formValidator=127.0.0.1:8080/workspace/tianji-frontend/modules/formValidator/js/&dropBox-not-use-seajs=127.0.0.1:8080/workspace/tianji-frontend/modules/dropBox/js/&clearCache=1.0.3-dev" id="pageScriptInit"></script>-->
+
+
+<script type="text/javascript" src="../../../gallery/jquery-1.7.2.min.js"></script>
+<!-- <script type="text/javascript" src="http://image.tianji.com/tjs/dropBox/js/tjDropBox.min.js"></script> -->
+<script type="text/javascript" src="../../dropBox/js/boxData.js"></script>
+<script type="text/javascript" src="../../dropBox/js/dropBox.js"></script>
+<script type="text/javascript" src="../js/formValidator.js"></script>
+<script type="text/javascript" src="http://image.tianji.com/tjs/gallery/underscore-min.js"></script>
+<script src="http://image.tianji.com/tjs/msPickMap/js/publicFn.min.js" type="text/javascript"></script>
+<script src="http://image.tianji.com/tjs/msPickMap/js/city.min.js?v=1.0.19-dev" type="text/javascript"></script>
+<script type="text/javascript">
+$(function (){
+    $('form').formValidator({
+        nodeName: 'div',
+        triggerMethod: 'submit'
+    });
+    $('#wml-p-data-wrap').dropBox({
+        dataName: 'salary',
+        required: true
+    });
+    $("#p-data-wrap").msCityPlugin({
+		type:'city',	//默认为city可省略
+		check:'checkbox',	//可设置为 radio/checkbox 默认为checkbox可省略
+		maxCount:3,		//多选下的最多选择条数,默认为5条,如为5条可省略
+		column:6,		//默认为6列此处可省
+		allDataMap:cityDataMap,	//配置不同的数据源,此处为城市数据 必需有。
+		name:'cityCode_', //设置隐藏input的name属性值。默认为cityCode,见意按需要自已设置。
+		align:"left"	//设置下拉对齐方式,可设置left/right不设置,默认是left
+    });
+});
+</script>
+</body>
+</html>
